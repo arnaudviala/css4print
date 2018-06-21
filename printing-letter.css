@@ -1,0 +1,5 @@
+@page {
+  size: letter;
+  margin: 0;
+  -webkit-print-color-adjust: exact;
+}

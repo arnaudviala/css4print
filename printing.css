@@ -1,0 +1,68 @@
+/* the @page at-rule is stored in printing-${format}.css files */
+
+body {
+  background: none;
+  background-color: white;
+  margin: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.page {
+  border: none;
+  margin: 0;
+}
+
+
+/* disable the special color for "ToDo" and "ToAdapt" items */
+.todo,
+.todel,
+.toadapt {
+  color: inherit;
+}
+.todo.evenwhenprinting,
+.todel.evenwhenprinting,
+.todadapt.evenwhenprinting {
+  color: red ! important
+}
+
+progress {
+  width: 6.5em;
+  height: 1em;
+  float: right;
+  -webkit-appearance: none;
+  /*appearance: none;*/
+  color: blue;
+}
+progress[value]::-webkit-progress-bar {
+  border: 1px solid #ccc;
+  box-shadow: 0 0px 0px; /* rgba(0, 0, 0, 0.25) inset;*/
+}
+progress[value]::-webkit-progress-value {
+  background-image:
+	   /*-webkit-linear-gradient(-45deg, 
+	                           transparent 33%, rgba(0, 0, 0, .1) 33%, 
+	                           rgba(0,0, 0, .1) 66%, transparent 66%),*/
+	   -webkit-linear-gradient(top, 
+	                           rgba(255, 255, 255, .25), 
+	                           rgba(0, 0, 0, .25)),
+	   -webkit-linear-gradient(left, #3e93db, #3e93db);
+
+    border-radius: 2px; 
+    background-size: 35px 20px, 100% 100%, 100% 100%;
+}
+progress[value]::-webkit-progress-bar {
+  background-color: #eee;
+}
+progress[value]::-webkit-progress-value {
+  background-color: #3e93db;
+}
+
+
+
+div.pagebreak {
+  display: block;
+  page-break-before: always;
+  margin-top: 0.75cm;
+  margin-bottom: 0.75cm;
+}

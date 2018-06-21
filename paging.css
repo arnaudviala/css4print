@@ -1,0 +1,64 @@
+body {
+  background-color: rgb(200,200,200);
+  /*background: url(damier.svg) repeat;*/
+  background: repeating-linear-gradient(
+    45deg,
+    #DDD,
+    #DDD 10px,
+    #CCC 10px,
+    #CCC 20px
+  );
+  /*background-size: 2cm;*/
+  font-family: Roboto;
+  margin: 0;
+  padding-top: 1cm;
+  padding-bottom: 1cm;
+  text-size-adjust: none;
+}
+
+.page {
+  border: 1px solid rgb(100,100,100);
+  background-color: white;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  position: relative;
+}
+.page-a4 {          /* A4 is 21cm x 29.7cm  */
+  width: 19cm;	    /* 21cm - 2*padding     */
+  padding: 1cm;
+}
+.page-us {          /* us aka letter is 8.5in x 11in  */
+  width: 7.7in;	    /* 8.5in - 2*padding              */
+  padding: 0.40in;  /* ~1cm                           */
+}
+/* setting the "height" is only necessary/useful for single page documents */
+.page-a4.single-page {
+  height: 27.7cm;	  /* 29.7cm - 2*padding   */
+}
+.page-us.single-page {
+  height: 10.2in;	  /* 11in - 2*padding               */
+}
+/* "landscape" class is not ready yet,
+ *  asking by CSS to print in landscape is not so simple...
+ *
+.page-a4.landscape {
+  width: 27.7cm;    /* 29.7cm - 2*padding  *
+}
+.page-us.landscape {
+  width: 10.2in;    /* 11in - 2*padding *
+}
+.page-a4.single-page.landscape {
+  height: 19cm;	  /* 21cm - 2*padding   *
+}
+.page-us.single-page.landscape {
+  height: 7.7in;	  /* 8.5in - 2*padding              *
+}
+**/
+
+
+.page p {
+  margin: 0;
+  padding: 0;
+}
