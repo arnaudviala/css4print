@@ -12,8 +12,33 @@ Few month after, I needed to print business cards. And it was the same choice : 
 
 So for now, the first commit contains the initial files `paging.css`, `printing.css`, `printing-a4.css` and `printing-letter.css`. The plan is to merge all those CSS rules into one file only (if possible, maybe I would still need different files for the paper size: `A4` or `letter`). But before merging, let's populate the `tests/` folder with some examples files.
 
-## TODOs:
+### Similar projects
 
-- point 1
+Just before writing those CSS files, I looked for same feature on the web and I couldn't find anything (I don't remember the keywords used for the search). After created those CSS files, at the time of posting a early version, I found other similar projects :
+- https://github.com/cognitom/paper-css, the purpose of this one is really similar to my goal
+- https://github.com/papercss/papercss   (https://getpapercss.com)
+- https://github.com/BafS/Gutenberg
 
-- point 2
+The first one, `cognitom/paper-css` is very similar to `css4print` -- focused on CSS rules for paper document. The goal of project "css4print" was
+> I need to create a PDF (to then print it in a print-service shop). The document can be programmatically generated in HTML/CSS with Javascript. Or simply I prefer to quickly use my HTML/CSS skills instead of launching Adobe Illustrator.
+
+The purposes of the two other projects are a l bit different.
+
+
+## TODO:
+
+- ~~Upload the initial version~~
+- Merge all CSS into a single file `css4print.css`
+- Use a minifier to create a `css4print.min.css` file
+- Add the possibility to create outline-cut lines around shapes. Lines that would be printed on each corner of a box for a better cutting. Simply add the class "cutting-outlines" and some javascript would create all those lines.
+- Add the landscape option.
+
+
+## Documentation
+
+For now, this section is empty. Look at the examples for a better understanding of what is possible.
+
+```
+TODO:
+Write how to setup the paper size (A4 or US-letter). See how to extend to other sizes.
+```
