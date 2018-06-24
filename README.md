@@ -61,3 +61,10 @@ To display rulers on the edge of your `document.body`, simply include the two fo
 <script type="text/javascript" src="rulers.js"></script>
 ...
 ```
+
+Rulers default unit is 'px' (pixels). Other supported units are 'cm' and 'in'. The reference (aka the `(0,0)` point) is the document's body top-left corner. It's possible to set another reference, by changing the `ref` option.
+
+It's possible to set rulers' options directly from the `<script>` tag, like this:
+```
+<script type="text/javascript" src="rulers.js" data-ref=".page" data-unit="cm"></script>
+```
