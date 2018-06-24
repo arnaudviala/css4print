@@ -30,7 +30,8 @@ The purposes of the two other projects are a l bit different.
 - ~~Upload the initial version~~
 - Merge all CSS into a single file `css4print.css`
 - Use a minifier to create a `css4print.min.css` file
-- Add the possibility to create outline-cut lines around shapes. Lines that would be printed on each corner of a box for a better cutting. Simply add the class "cutting-outlines" and some javascript would create all those lines.
+- ~~Add the possibility to create outline-cut lines around shapes. Lines that would be printed on each corner of a box for a better cutting. Simply add the class "cutting-outlines" and some javascript would create all those lines.~~
+  - Done. Possible enhancement, get rid (or simplify) of "z-index" used everywhere for this.
 - Add the landscape option.
 
 
@@ -115,4 +116,18 @@ Basically, it is necessary to embed one HTML element `crop-line-...` for each li
 
 #### 'crop-lines' + JS, automatic mode
 
+To automatically add crop-lines to HTML elements, and to deal with overlapping: using a Javascript helper was necessary. Files that need to be included are : `crop-lines.css`, `crop-lines.js` and `jquery...js` as well.
+
+The helper script `crop-lines.js` looks for elements matching a specific selector (given by attribute `data-selector=".add-crop-lines"`). For each it creates some crop-lines elements in the background as children of the `.page` parent (unless specified differently with attribute `data-parent-selector`).
+
+```
 ...
+<link rel="stylesheet" type="text/css" href="crop-lines.css">
+...
+<script type="text/javascript"
+  src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+  crossorigin="anonymous"></script>
+<script type="text/javascript" src="crop-lines.js" data-selector=".add-crop-lines"></script>
+...
+```
