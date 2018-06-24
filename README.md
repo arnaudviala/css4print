@@ -74,7 +74,7 @@ It's possible to set rulers' options directly from the `<script>` tag, like this
 To display crop marks on your document, whose goal is to be printed to be able
 to crop your print job : there are several solutions.
 
-#### Simple 'crop-box'
+#### 'crop-box', very simple cases
 
 For simple use cases, including the `crop-box.css` stylesheet in your document and adding the class name `crop-box` to HTML elements will do the job. Look at `tests/21-crop-box` to see an example.
 
@@ -91,3 +91,28 @@ For simple use cases, including the `crop-box.css` stylesheet in your document a
 ```
 
 The simple 'crop-box' method is not suitable for more complex use cases: when HTML elements are transparents or when the crop marks overlap on other HTML elements.
+
+
+#### 'crop-lines', specific cases
+
+By using solely the `crop-lines.css` stylesheet, drawing crop-lines over transparent elements is not a problem any more. But it also lets the user specify which lines to draw (left, top, right or bottom). Look at the `tests/23-crops-lines-static` test for an example case.
+
+Basically, it is necessary to embed one HTML element `crop-line-...` for each line you want to see.
+
+```
+...
+<link rel="stylesheet" type="text/css" href="crop-lines.css">
+...
+<div class="ticket">
+  <div class="crop-line-left"></div>
+  <div class="crop-line-top"></div>
+  <div class="crop-line-right"></div>
+  <div class="crop-line-bottom"></div>
+  ...
+</div>
+...
+```
+
+#### 'crop-lines' + JS, automatic mode
+
+...

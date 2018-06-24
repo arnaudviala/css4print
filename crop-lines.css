@@ -1,0 +1,162 @@
+.crop-line-top,
+.crop-line-left ,
+.crop-line-bottom ,
+.crop-line-right {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;  /* take the shape of the parent container box */
+  display: block;
+}
+
+
+.crop-line-top:before ,
+.crop-line-top:after ,
+.crop-line-left:before ,
+.crop-line-left:after ,
+.crop-line-bottom:before ,
+.crop-line-bottom:after ,
+.crop-line-right:before ,
+.crop-line-right:after {
+  content: "";
+  position: absolute;
+}
+.crop-line-top:before ,
+.crop-line-top:after ,
+.crop-line-bottom:before ,
+.crop-line-bottom:after {
+  width: 3.5em;
+}
+.crop-line-left:before ,
+.crop-line-left:after ,
+.crop-line-right:before ,
+.crop-line-right:after {
+  height: 3.5em;
+}
+.crop-line-top:before ,
+.crop-line-top:after {
+  top: 0px;
+}
+.crop-line-bottom:before ,
+.crop-line-bottom:after {
+  bottom: 0px;
+}
+.crop-line-top:before ,
+.crop-line-bottom:before {
+  left: -4em;
+}
+.crop-line-top:after ,
+.crop-line-bottom:after {
+  right: -4em;
+}
+.crop-line-left:before ,
+.crop-line-left:after {
+  left: 0px;
+}
+.crop-line-right:before ,
+.crop-line-right:after {
+  right: 0px;
+}
+.crop-line-left:before ,
+.crop-line-right:before {
+  top: -4em;
+}
+.crop-line-left:after ,
+.crop-line-right:after {
+  bottom: -4em;
+}
+
+
+@media screen {
+  .crop-line-top:before ,
+  .crop-line-top:after ,
+  .crop-line-bottom:before ,
+  .crop-line-bottom:after {
+    height: 1px;
+  }
+  .crop-line-left:before ,
+  .crop-line-left:after ,
+  .crop-line-right:before ,
+  .crop-line-right:after {
+    width: 1px;
+  }
+
+  .crop-line-top:before ,
+  .crop-line-bottom:before {
+    background-image: repeating-linear-gradient(
+                        270deg,
+                        #000,
+                        transparent);
+  }
+  .crop-line-top:after ,
+  .crop-line-bottom:after {
+    background-image: repeating-linear-gradient(
+                        90deg,
+                        #000,
+                        transparent);
+  }
+  .crop-line-left:before ,
+  .crop-line-right:before {
+    background-image: repeating-linear-gradient(
+                        0deg,
+                        #000,
+                        transparent);
+  }
+  .crop-line-left:after ,
+  .crop-line-right:after {
+    background-image: repeating-linear-gradient(
+                        180deg,
+                        #000,
+                        transparent);
+  }
+}
+
+
+
+/* better PDF generation :
+ * - use "pt" unit for line's size (width/height)
+ * - avoid gradient
+ */
+@media print {
+  .crop-line-top:before ,
+  .crop-line-top:after ,
+  .crop-line-bottom:before ,
+  .crop-line-bottom:after {
+    height: 1px /*0.4pt;*/
+  }
+  .crop-line-left:before ,
+  .crop-line-left:after ,
+  .crop-line-right:before ,
+  .crop-line-right:after {
+    width: 1px; /*0.7pt;*/
+  }
+
+  .crop-line-top:before ,
+  .crop-line-bottom:before ,
+  .crop-line-top:after ,
+  .crop-line-bottom:after ,
+  .crop-line-left:before ,
+  .crop-line-right:before ,
+  .crop-line-left:after ,
+  .crop-line-right:after {
+    background-color: #000;
+  }
+}
+
+
+/* A ".crop-mask" element is created by the script 'crop-lines.js' when
+ * creating the crop-lines automatically.
+ * The mask is necessary to solve the problem of crop-lines overlapping
+ * another element.
+ */
+.crop-mask {
+  background-color: inherit;
+  /* the script 'crop-lines.js' will change the following properties
+   * - border-width,
+   * - border-color (will be detected dynamically from real background-color)
+   */
+  border-style: solid;
+  border-color: transparent;
+  z-index: 0;
+}
