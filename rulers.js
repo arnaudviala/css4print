@@ -212,7 +212,10 @@ $(document).ready(function() {
       });
 
       $(window).mousemove( function(e) {
-        self._moveCursorTicks( { x: e.offsetX, y: e.offsetY } );
+        /* There is several (X,Y) information in mouseEvent 'e' :
+         * clientX|Y, offsetX|Y, pageX|Y and screenX|Y/
+         * The one that best suits need here is 'clientX|Y'. */
+        self._moveCursorTicks( { x: e.clientX, y: e.clientY } );
       });
     },
 
