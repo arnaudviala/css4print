@@ -42,3 +42,22 @@ For now, this section is empty. Look at the examples for a better understanding 
 TODO:
 Write how to setup the paper size (A4 or US-letter). See how to extend to other sizes.
 ```
+
+
+
+
+### Rulers
+
+To display rulers on the edge of your `document.body`, simply include the two following files (and the jquery dependencies):
+
+```
+...
+<link rel="stylesheet" type="text/css" href="rulers.css">
+...
+<script type="text/javascript"
+  src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+  crossorigin="anonymous"></script>
+<script type="text/javascript" src="rulers.js"></script>
+...
+```
