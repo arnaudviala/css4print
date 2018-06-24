@@ -146,6 +146,7 @@
 .ruler .h .ticks s.cursor ,
 .ruler .v .ticks s.cursor {
   border-color: red;
+  z-index:  2;  /* so it's displayed above regular ticks */
 }
 .ruler .h .ticks s.cursor label,
 .ruler .v .ticks s.cursor label {
