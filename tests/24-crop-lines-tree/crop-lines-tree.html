@@ -1,0 +1,96 @@
+<html>
+<head>
+<meta charset="UTF-8" />
+
+<link rel="stylesheet" type="text/css" href="../../paging.css">
+<link rel="stylesheet" type="text/css" href="../../crop-lines.css">
+<link rel="stylesheet" type="text/css" href="../../printing-letter.css" media="print">
+<link rel="stylesheet" type="text/css" href="../../printing.css" media="print">
+
+<title>crop-lines-tree</title>
+
+<style type="text/css">
+.page {
+  padding: 1cm 3cm;
+  position: relative;
+  z-index: -10;
+}
+
+.page p {
+  padding: 1cm 0 2cm 0;
+}
+.page p textarea {
+  width: 60ex;
+  resize: none;
+  border: 1px dotted grey;
+  background: transparent;
+  padding: 0.2cm;
+  height: 2.5em;
+}
+
+ul {
+  margin-top: 1cm;
+}
+
+.ticket {
+  position: relative;
+  border: none; /*1px solid green;*/
+  text-align: center;
+  font-size: 0.4cm;
+  box-sizing: border-box;
+  width: 4cm;
+  height: 4cm;
+  display: inline-block;
+  background-color: #EEE;
+  padding: 1cm;
+}
+.ticket h1 ,
+.ticket h3 {
+  margin: 0;
+}
+</style>
+
+<script type="text/javascript"
+  src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+  crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="../../crop-lines.js"></script>
+
+</head>
+<body>
+
+<div class="page page-us single-page">
+
+<p>The goal of this test is to check that automatic add of crop-lines
+  works anywhere in the DOM tree.
+  A first implementation were only working for elements that were direct
+  children of the '.page' element.
+</p>
+
+  <div class="ticket add-crop-lines">
+    <h3>Ticket</h3>
+    <h1>#1</h1>
+  </div>
+  <ul>
+    <div class="ticket add-crop-lines">
+      <h3>Ticket</h3>
+      <h1>#2</h1>
+    </div>
+    <ul>
+      <div class="ticket add-crop-lines">
+        <h3>Ticket</h3>
+        <h1>#3</h1>
+      </div>
+      <ul>
+        <div class="ticket add-crop-lines">
+          <h3>Ticket</h3>
+          <h1>#4</h1>
+        </div>
+      </ul>
+    </ul>
+  </ul>
+
+</div><!-- PAGE -->
+</body>
+</html>

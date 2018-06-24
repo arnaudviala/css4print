@@ -1,0 +1,68 @@
+<html>
+<head>
+<meta charset="UTF-8" />
+
+<link rel="stylesheet" type="text/css" href="../../paging.css">
+<link rel="stylesheet" type="text/css" href="../../crop-lines.css">
+<link rel="stylesheet" type="text/css" href="../../printing-letter.css" media="print">
+<link rel="stylesheet" type="text/css" href="../../printing.css" media="print">
+
+<title>crop-marks-overlay</title>
+
+<style type="text/css">
+.page div.textblock {
+  border: none;
+  background-color: rgba(224,224,224,0.93);
+  padding:2cm;
+  z-index: 10;
+
+  box-sizing: border-box;
+  width: 10.5cm;
+  height: 10.5cm;
+}
+
+#textblock1 {
+  position: absolute;
+  top: 3cm;
+  left: 6.5cm;
+  /*right: 4.5cm;*/
+  z-index: 10;
+
+}
+
+#textblock2 {
+  margin: 13cm 5.5cm 0 3.5cm;  /* T R B L */
+  position: relative;
+  z-index: 10;
+}
+</style>
+
+</head>
+<body>
+
+<div class="page page-us single-page">
+
+<div id="textblock1" class="textblock crop-box">
+  <div class="crop-line-left"></div>
+  <div class="crop-line-top"></div>
+  <div class="crop-line-right"></div>
+  <div class="crop-line-bottom"></div>
+  This is the TextBlock #1 <br/> Lorem ipsum
+  dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+  ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+  exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+</div>
+
+<div id="textblock2" class="textblock">
+  <div class="crop-line-left"></div>
+  <div class="crop-line-top"></div>
+  <div class="crop-line-right"></div>
+  <div class="crop-line-bottom"></div>
+  This is the TextBlock #2 <br/> Lorem ipsum
+  dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+  ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+  exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+
+</div><!-- PAGE -->
+</body>
+</html>
