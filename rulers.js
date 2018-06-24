@@ -6,6 +6,15 @@
  * - add the persistence of some menu options (unit, ...)
  */
 
+// ugly global variable , but I don't know how to get correctly a reference
+// to the current script. In $.ready(...) context execution, it's too late.
+// (document.currentScript is not working // at least with Chromium)
+var script__ruler_js;
+{
+  var scripts = document.getElementsByTagName('script');
+  script__ruler_js = scripts[scripts.length-1];
+}
+
 $(document).ready(function() {
 
   // "rulers" singleton, embark all internal variables+methods necessary
@@ -14,20 +23,36 @@ $(document).ready(function() {
     // default options
     _OPTIONS: {
       unit: "px",
-      ref:  ".page"
+      ref:  "body"
     },
 
     // contains the conversion ratio between "cm" or "in" to "pixels"
     _RATIOS: { 'px':1 },
 
     init: function() {
+      // there's several way to give options
+      this._loadScriptParams();
       this._loadURLSearchParams();
+
       this._computeRatios( ['cm','in'] );
       this._addHTMLElements();
       this._drawTicks();
       this._moveTicks();
 
       this._registerWindowEvents();
+    },
+
+    _loadScriptParams: function()
+    {
+      if ( !script__ruler_js || !script__ruler_js.attributes ) return;
+
+      for( var o in this._OPTIONS ) {
+        var attr = script__ruler_js.attributes.getNamedItem('data-'+o);
+        if ( attr )
+        {
+          this._OPTIONS[o] = attr.value;
+        }
+      }
     },
 
     //  Internal: Look for "ruler-*" parameters in the URL's search
