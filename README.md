@@ -68,3 +68,26 @@ It's possible to set rulers' options directly from the `<script>` tag, like this
 ```
 <script type="text/javascript" src="rulers.js" data-ref=".page" data-unit="cm"></script>
 ```
+
+### Crop marks
+
+To display crop marks on your document, whose goal is to be printed to be able
+to crop your print job : there are several solutions.
+
+#### Simple 'crop-box'
+
+For simple use cases, including the `crop-box.css` stylesheet in your document and adding the class name `crop-box` to HTML elements will do the job. Look at `tests/21-crop-box` to see an example.
+
+```
+...
+<link rel="stylesheet" type="text/css" href="crop-box.css">
+...
+<div class="crop-box">
+  This element<br/>
+  would be<br/>
+  cropped
+</div>
+...
+```
+
+The simple 'crop-box' method is not suitable for more complex use cases: when HTML elements are transparents or when the crop marks overlap on other HTML elements.

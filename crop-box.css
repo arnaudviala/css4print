@@ -1,0 +1,69 @@
+/*
+ * HOW-TO:
+ *  - Simply include the "crop-box.css" file.
+ *  - Add the class ".crop-box" to any HTML elements you want to crop.
+ *  That's it and in simple cases, it works well.
+ *
+ * DRAWBACKS:
+ * 1. The '.page' needs to have its "z-index" initialized to a value.
+ *    We chose "0". It can be overriden to something else.
+ *
+ * 2. The '.crop-box' element has to be positionned, either "relative" or
+ *    "absolute". So in this CSS, we force to "relative" but it can be overriden
+ *    later.
+
+ * 3. The '.crop-box' needs a solid background. Without it, cropping lines would
+ *    are visible. It's not forced, document needs to set it explicitly.
+ *
+ *      Setting 'top/right/bottom/left' to `-1px` have been tried, but it
+ *      doesn't work well when printing (or generating a PDF). This reason
+ *      explains why there is no ".crop-box-transparent" class/rules.
+ *
+ * 4. The '.crop-box' will be applied a quite-thick border : white (at printing)
+ *    and 10px thick. It's mandatory to avoid cropping lines to join at each
+ *    corners. But setting this border makes it a mess to set the object size).
+ */
+.page {
+  z-index: 0;
+}
+.crop-box {
+  position: relative; /* can be overriden to absolute by another CSS */
+  border-width: 10px;
+  border-style: solid;
+  /* border-color is set in @media rules,
+   * so it would appear "greenish" on screen (for debug/reminder purpose) */
+}
+
+@media screen {
+  .crop-box {
+    border-color: rgba(0, 255, 0, 0.2);
+  }
+}
+@media print {
+  .crop-box {
+    border-color: white;
+  }
+}
+.crop-box:before ,
+.crop-box:after {
+  content: "";
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  position: absolute;
+  border: solid black;
+  z-index: -1;
+}
+.crop-box:before ,
+.crop-box-transparent:before {
+  border-width: 1px 0px;
+  left: -4em;
+  right: -4em;
+}
+.crop-box:after ,
+.crop-box-transparent:after {
+  border-width: 0px 1px;
+  top: -4em;
+  bottom: -4em;
+}
