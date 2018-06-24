@@ -1,0 +1,46 @@
+<html>
+<head>
+<meta charset="UTF-8" />
+
+<link rel="stylesheet" type="text/css" href="../../paging.css">
+<link rel="stylesheet" type="text/css" href="../../printing-letter.css" media="print">
+<link rel="stylesheet" type="text/css" href="../../printing.css" media="print">
+
+<title>A single page</title>
+
+<style>
+@media screen {
+  .page {
+    background-color: rgb(255,255,192);
+  }
+}
+.page div {
+  border: 1px dashed grey;
+  padding:2cm;
+  margin-top:9cm;
+}
+</style>
+
+</head>
+<body>
+
+<div class="page page-us single-page">
+
+<div>If your work is going to be printed on colored paper, for "wysiwyg" purpose
+  you can add a specific color in a small <tt>&lt;style&gt;</tt> tag at the
+  beginning of your document.
+  Using @media screen, the background-color won't be present on the print job,
+  or the printed PDF.<br/>
+  <pre>
+  @media screen {
+    .page {
+      background-color: rgb(255,255,192);
+    }
+  }</pre>
+  (avoid alpha color if you don't want to see the stripped 'body')<br/>
+
+</div>
+
+</div><!-- PAGE -->
+</body>
+</html>
