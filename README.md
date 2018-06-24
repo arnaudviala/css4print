@@ -1,28 +1,38 @@
 # css4print
 
-Some CSS files to include when creating a HTML5 document whose goal is to be printed (Paper or PDF). Look at the example in the [tests/](tests/) directory. What 
+Toolkit composed of small CSS or JS files to create HTML5 documents whose goal is to be printed (Paper or PDF).
 
 Using those CSS files, it becomes very easy to create a single page document programmatically (using HTML5 and CSS) instead of using a graphical design editor. Multiple pages is also supported.
 
+Look at the example in the [tests/](tests/) directory.
+
 ## Early versions
 
-The first goal of these CSS files was to create my résumé. I didn't want to use any word processor (either Ms Word or LibreOffice) because they didn't offer enough creative possibilities. Long time ago, I used Adobe Illustrator. The result was satisfying but the resumé was quite complicated to update. So I came to the idea of doing it using HTML5 and CSS, and using a browser to create a PDF. So I start writing simple CSS rules so my CV appears like a paper sheet on the screen and is rendered as-is on PDF.
+The first goal of these CSS files was to create a résumé. Several solutions were available:
 
-Few month after, I needed to print business cards. And it was the same choice : Illustrator or HTML5 ? So I copied the CSS files again and I thought I should create a separate project which would be a simple easy-to-include CSS file to be able to create document aimed at being printed.
+  a) a word processor like Ms Word or LibreOffice ? They didn't offer enough design possibilities.
 
-So for now, the first commit contains the initial files `paging.css`, `printing.css`, `printing-a4.css` and `printing-letter.css`. The plan is to merge all those CSS rules into one file only (if possible, maybe I would still need different files for the paper size: `A4` or `letter`). But before merging, let's populate the `tests/` folder with some examples files.
+  b) using Adobe software (Illustrator or InDesign) ? Design offering is endless (they are amazing tools). But at each résumé modification, there was some graphical stuff to tweak again (alignment...). (Is there any "separation of content/style" in Adobe tools ?)
+
+  c) using HTML5 and CSS ? Those technologies allow a lot creative stuff and the "separation of style and content" is already a standard. And it allow also programmatic generation of content thanks to Javascript.
+
+Here was the beginning. To design PDF from an HTML document, some CSS rules to simulate a sheet of paper was necessary in order to the résumé to appear like a paper sheet on the screen and be rendered as-is on PDF.
+
+Few month after, another related project was to quickly print business cards. And it was the same choice : Illustrator or HTML5 ? Using the same CSS files again, maybe it was time to create a dedicated and separated set of useful files.
+
+So here is this repositoty containing simple easy-to-include CSS file (as well as JS helper for some specific tasks) to be able to create HTML5 documents aimed at being printed (or PDF generated).
+
+So for now, the first commit contains the initial files `paging.css`, `printing.css`, `printing-a4.css` and `printing-letter.css`. The plan is to merge all those CSS rules into one file only (if possible, maybe different files would be needed for each paper size: `A4` or `letter`). But before merging, let's populate the `tests/` folder with some examples files.
 
 ### Similar projects
 
-Just before writing those CSS files, I looked for same feature on the web and I couldn't find anything (I don't remember the keywords used for the search). After created those CSS files, at the time of posting a early version, I found other similar projects :
-- https://github.com/cognitom/paper-css, the purpose of this one is really similar to my goal
+Just before writing those CSS files, I looked for same feature on the web and I couldn't find anything (I don't remember the keywords used for the search). Once written, at the time this repository creation, I found other similar projects :
+- https://github.com/cognitom/paper-css, the purpose of this one is really -- really -- similar
 - https://github.com/papercss/papercss   (https://getpapercss.com)
 - https://github.com/BafS/Gutenberg
 
-The first one, `cognitom/paper-css` is very similar to `css4print` -- focused on CSS rules for paper document. The goal of project "css4print" was
-> I need to create a PDF (to then print it in a print-service shop). The document can be programmatically generated in HTML/CSS with Javascript. Or simply I prefer to quickly use my HTML/CSS skills instead of launching Adobe Illustrator.
 
-The purposes of the two other projects are a l bit different.
+The purpose of the last two projects are a little bit different.
 
 
 ## TODO:
