@@ -63,6 +63,10 @@
 .ruler .corner:active {
   background-color: red;
 }
+.ruler .corner {
+  font-size: 65%;
+  text-align: center;
+}
 
 .ruler .h .ticks ,
 .ruler .v .ticks ,
@@ -194,10 +198,19 @@ body {
   top: 14px;
   left: 14px;
   border: 1px solid black;
-  /*width: 10em;
-  height: 10em;*/
+  width: 14em;
+  /*height: 10em;*/
   padding: 5px;
   background-color: white;
+}
+.ruler .menu a.close {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  cursor: pointer;
+}
+.ruler .menu a.close:hover {
+  font-weight: bold;
 }
 .ruler .menu li {
   margin-top: 3px;
@@ -209,5 +222,5 @@ body {
   display: inline-block;
 }
 .ruler .menu .cursor-position {
-  width: 10em;
+  width: 6em;
 }

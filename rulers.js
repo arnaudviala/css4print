@@ -1,8 +1,9 @@
 /*
  *
  * TODO:
- *  - add a option in menu to hide rulers
- *  - add the possibility to show only the vertical or horizontal ruler
+ * - add a option in menu to hide rulers
+ * - add the possibility to show only the vertical or horizontal ruler
+ * - add the persistence of some menu options (unit, ...)
  */
 
 $(document).ready(function() {
@@ -73,8 +74,8 @@ $(document).ready(function() {
     {
       var divRulerH = $('<div>').addClass("h");
       var divRulerV = $('<div>').addClass("v");
-      var divRulerMenu = $('<ul>').addClass("menu");//TODO:.hide();
-      var divRulerCorner = $('<div>').addClass("corner");
+      var divRulerMenu = $('<ul>').addClass("menu").hide();
+      var divRulerCorner = $('<div>').addClass("corner").text('i');
 
       var divRuler = $('<div>')
         .addClass("ruler")
@@ -88,30 +89,42 @@ $(document).ready(function() {
         .append( $('<label>').text('Mouse:') )
         .append( $('<label>').addClass("cursor-position") )
         .appendTo(divRulerMenu);
-      var list = $('<select>')
-        .html( '<option value="px">px</option>'
-              +'<option value="cm">cm</option>'
-              +'<option value="in">in</option>' );
-      // TODO: make this dynamic based on an array [ "px", "cm", "in" ]
+      var list = $('<select>');
+      for( var u in this._RATIOS )
+      {
+        var option = $('<option>').attr('value',u).text(u);
+        if ( u == this._OPTIONS['unit'] ) {
+          option.attr("selected", "1");
+        }
+        list.append( option );
+      }
 
       var liUnit = $('<li>')
         .append( $('<label>').text('Unit:') )
         .append( list )
         .appendTo(divRulerMenu);
-      list.find("[value="+this._OPTIONS['unit']+"]")
-        .attr("selected", "1");
 
       var self = this;
       list.on('change',function(){
-        // TODO: write a subfunction self._onUnitChange( $(this).val() );
-        self._OPTIONS['unit'] = $(this).val();
-        // for now, we simply reload by changing URL's search
-        var urlParams = new URLSearchParams(window.location.search);
-        urlParams.set('ruler-unit', self._OPTIONS['unit']);
-        window.location.search = urlParams.toString();
+        self._onUnitChange( $(this).val() );
       });
 
+      var note = $('<sub>')
+        .text("For now, 'unit' option is not persistent and would be lost at each reload. \
+              If it's annoying, add '?ruler-unit=xx' to URL." )
+        .appendTo(divRulerMenu);
+
+
       divRulerCorner
+        .data("ruler-menu",divRulerMenu)
+        .on('click',function(){
+          $(this).data("ruler-menu").toggle();
+        });
+
+      var close = $('<a>')
+        .addClass("close")
+        .text("×")
+        .appendTo( divRulerMenu )
         .data("ruler-menu",divRulerMenu)
         .on('click',function(){
           $(this).data("ruler-menu").toggle();
@@ -151,6 +164,18 @@ $(document).ready(function() {
       this._HTMLElements['divTickMouseV'] = tCy;
     },
 
+    _onUnitChange: function( unit ) {
+      this._OPTIONS['unit'] = unit;
+      this._clearTicks();
+      this._drawTicks();
+      this._moveTicks();
+      return;
+      /* old code, used at a time the document was reloaded at each unit-change
+      var urlParams = new URLSearchParams(window.location.search);
+      urlParams.set('ruler-unit', this._OPTIONS['unit']);
+      window.location.search = urlParams.toString(); */
+    },
+
     _registerWindowEvents: function()
     {
       var self = this;
@@ -170,8 +195,7 @@ $(document).ready(function() {
     //            so that relative x=0, y=0 match ref's {left,top}
     _moveTicks: function()
     {
-      var ref = $('.page');
-      // TODO: here, the reference '.page' is hard-coded
+      var ref = $(this._OPTIONS['ref']);
       var offset = ref.offset();
       offset.top -= $(document.body).scrollTop();
       offset.left -= $(document.body).scrollLeft();
@@ -265,6 +289,16 @@ $(document).ready(function() {
           $('<label>').text(label).appendTo(t);
         }
       }
+    },
+
+    _clearTicks: function() {
+      var tmpContainer = this._HTMLElements['divRuler'];
+      this._HTMLElements['divTickMouseH'].hide().appendTo(tmpContainer);
+      this._HTMLElements['divTickMouseV'].hide().appendTo(tmpContainer);
+      this._HTMLElements['divTicksH'].empty();
+      this._HTMLElements['divTicksV'].empty();
+      this._HTMLElements['divTickMouseH'].show().appendTo(this._HTMLElements['divTicksH']);
+      this._HTMLElements['divTickMouseV'].show().appendTo(this._HTMLElements['divTicksV']);
     },
 
     _moveCursorTicks: function( cursorPosition )
