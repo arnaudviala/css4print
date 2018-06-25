@@ -12,6 +12,17 @@ body {
   padding-bottom: 1cm;
 }
 
+@media print {
+  body {
+    background: none;
+    background-color: white;
+    margin: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+
+
 /* A ".page" is not necessarly a single page.
  * Example, my résumé is contained in one '.page' element
  * but it's long and printed onto 2 or 3 pages (depending on the content).
@@ -27,6 +38,18 @@ body {
   position: relative;
   box-sizing: border-box;
 }
+@media print {
+  .page {
+    border: none;
+    margin: 0;
+  }
+}
+@page {
+  /* the "size" property is still set in specific files "printing-xxx.css" */
+  margin: 0;
+  -webkit-print-color-adjust: exact;
+}
+
 
 /* If your job is going to be printed on colored paper,
  * then you can add a specific color here, for "wysiwyg" purpose.
@@ -79,3 +102,25 @@ body {
   padding: 0;
 }
 
+
+
+/* a <div class="pagebreak"> element can be used in the HTML
+ * flow to force a page-break when printing.
+ * Such <div> won't be visible for the screen.
+ * (maybe for 'visual/wysiwyg' purpose it could be useful)
+ *
+ * TODO: write some tests/ pages for 'pagebreak'
+ */
+@media screen {
+  div.pagebreak {
+    display: none;
+  }
+}
+@media print {
+  div.pagebreak {
+    display: block;
+    page-break-before: always;
+    margin-top: 0.75cm;
+    margin-bottom: 0.75cm;
+  }
+}
