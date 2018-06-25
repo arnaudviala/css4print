@@ -1,5 +1,5 @@
 .vcard {
-  border: none; /*1px dotted grey;*/
+  border: 1px dotted transparent;
   display: inline-block;
   overflow: hidden;
   position: relative;
