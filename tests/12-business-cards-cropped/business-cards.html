@@ -1,0 +1,84 @@
+<html>
+<head>
+<meta charset="UTF-8" />
+
+<link rel="stylesheet" type="text/css" href="../../paging.css">
+<link rel="stylesheet" type="text/css" href="../../printing-letter.css" media="print">
+
+<link rel="stylesheet" type="text/css" href="../../rulers.css">
+<link rel="stylesheet" type="text/css" href="../../crop-lines.css">
+<link rel="stylesheet" type="text/css" href="business-cards.css">
+
+<!-- the title is used to create a default name when printing to PDF -->
+<title>Business Cards Cropped</title>
+
+<!--<script type="text/javascript" src="//code.jquery.com/jquery-3.3.1.slim.min.js"></script>-->
+<script type="text/javascript"
+  src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+  crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="../../rulers.js"
+        data-ref=".page" data-unit="in"></script>
+
+<script>
+// populate the 'vcards' DOM elements
+$(function() {
+  var vcards = $('#vcards');
+  var repeat_str = vcards.data("repeat");
+  var repeat_i = parseInt(repeat_str);
+  if ( ""+repeat_i == repeat_str )
+  {
+    // 'repeat_i' is a integer number
+    // we have to repeat the first '.vcard'
+    var vcard = vcards.children(".vcard").first();
+    for( var i=1 ; i<repeat_i ; i++ )
+    {
+      vcard.clone().appendTo( vcards );
+    }
+  }
+});
+</script>
+
+<!-- /!\ The script "crop-lines.js" must be included after the script that will
+         clone business cards. -->
+<script type="text/javascript" src="../../crop-lines.js"
+        data-selector=".cropped" data-parent-selector=".page"></script>
+
+</head>
+<body>
+
+<div class="page page-us single-page">
+
+  <i style="display:block;text-align:center;">This is a "letter" document containing programmatically-repeated business cards</i>
+
+  <div id="vcards" data-repeat="8" class="w-flex-sb">
+
+    <div class="vcard w-padding cropped">
+
+      <h1 id="name">
+        <span id="firstname">John</span>
+        <span id="lastname">Smith</span>
+      </h1>
+      <section id="job">
+        <h2 class="title">World Famous Anonymous</h2>
+        <span class="subtitle"></span>
+      </section>
+
+      <section id="contact"><h4>Contact</h4>
+        <ul>
+        <li class="fulladdress"><i class="ico ico-location"><label>address:</label></i>123 Small Avenue - Toronto ON M6K 4G2</li>
+        <li class="email"><i class="ico ico-email"><label>email:</label></i>john.smith&#64;webmail.com</li>
+        <li class="phone"><i class="ico ico-phone"><label>phone:</label></i>1-123-456-7890</li>
+        <li class="linkedin"><i class="ico ico-links"><label>website:</label></i>
+          <a href="https://www.linkedin.com/in/johnsmith">linkedin.com/in/johnsmith</a></li>
+        </ul>
+      </section> <!-- CONTACT -->
+
+    </div>
+
+  </div>
+
+</div><!-- PAGE -->
+</body>
+</html>
