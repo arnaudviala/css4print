@@ -33,6 +33,15 @@ $(function() {
     var obj = $(elem);
     var parent = obj.closest(_PARAMS['parent-selector']);
 
+    // /!\ For crop-lines to be visible, the parent '.page' (or whatever)
+    // must have a z-index set to something. So let's set it to 0.
+    // (I know, it's weird/dangerous/annoying to force such CSS from the JS...)
+    var zIndex = parent.css("z-index");
+    if ( zIndex == "auto" )
+    {
+      parent.css("z-index","0");
+    }
+
 
     var offsetObj = obj.offset();
     var offsetPage = parent.offset();
