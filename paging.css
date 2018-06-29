@@ -104,23 +104,76 @@ body {
 
 
 
-/* a <div class="pagebreak"> element can be used in the HTML
- * flow to force a page-break when printing.
- * Such <div> won't be visible for the screen.
- * (maybe for 'visual/wysiwyg' purpose it could be useful)
+/* *** PAGE-BREAK ***
+ *  A <div class="pagebreak"> element can be used in the HTML flow
+ *  to force a page-break when printing.
  *
- * TODO: write some tests/ pages for 'pagebreak'
+ *  By default, the <div> won't be visible for the screen.
+ *  But for 'wysiwyg' purpose, the <div> can be applied the class "visible"
+ *  so that it becomes visible in the browser.
  */
+
 @media screen {
   div.pagebreak {
     display: none;
+  }
+  div.pagebreak.visible {
+    border: none;
+    display: block;
+    box-sizing: content-box;
+    margin-left: -0.40in;  /* same as page's padding-left */
+    margin-right: -0.40in; /* same as page's padding-right */
+    padding-top: 0.40in;   /* same as page's margin-bottom */
+    padding-bottom: 0.40in;/* same as page's margin-top */
+    position: relative;
+  }
+  /* make a translucid grey background-color if mouse is over */
+  div.pagebreak.visible:hover {
+    background-color: rgba(192,192,192,0.25);
+  }
+  /* the ":before" element is the dashed line */
+  div.pagebreak.visible:before {
+    content: " ";
+    display: block;
+    width: 104%;
+    margin-left: -2%;
+    border-top: 1px dashed red;
+  }
+  /* the ":after" element is the "page-break" text */
+  div.pagebreak.visible:after {
+    color: red;
+    content: "page-break";
+    padding: 0 0.5rem 0 1em;
+    display: inline-block;
+  }
+  div.pagebreak.visible.margin-left:after ,
+  div.pagebreak.visible.margin-right:after {
+    width: 5em;
+    position: absolute;
+  }
+  div.pagebreak.visible.margin-left:after {
+    right: 100%;
+  }
+  div.pagebreak.visible.margin-right:after {
+    left: 100%;
   }
 }
 @media print {
   div.pagebreak {
     display: block;
     page-break-before: always;
-    margin-top: 0.75cm;
-    margin-bottom: 0.75cm;
+    height: 0px;
+    overflow: hidden;
+    /* the "overflow" property set to "hidden" is also important
+     * for the margin of the next element in the HTML flow.
+     * [don't understand exactly why, it's mandatory :-(] */
+
+    /* for .page with no padding, it's still necessary to use a very small margin
+     * as thin as 0.001cm... */
+    margin-top: 0.001cm;
+    border: none;
+
+    /* for .page-us with padding, margin-top as to be set to the same padding */
+    margin-top: 0.40in;
   }
 }

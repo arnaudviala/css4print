@@ -1,0 +1,96 @@
+<html>
+<head>
+<meta charset="UTF-8" />
+
+<link rel="stylesheet" type="text/css" href="../../paging.css">
+<!--<link rel="stylesheet" type="text/css" href="../../rulers.css">-->
+<link rel="stylesheet" type="text/css" href="../../printing-letter.css" media="print">
+
+<title>page-breaks</title>
+
+<style type="text/css">
+.page p.block {
+  border: 1px dashed grey;
+  padding: 2cm;
+  margin-top:9cm;
+}
+.page p.note {
+  margin-top: 1cm;
+  padding: 0 2cm;
+  border: none;
+}
+.page p.note textarea {
+  width: 100%;
+  padding: 0.5em;
+  resize: none;
+  box-sizing: border-box;
+  height: 2.2em;
+  background-color: #EEE;
+  background-color: rgba(192,192,192,0.25);
+  border: none;
+  border-left: 3px solid #CCC;
+  margin-bottom: 0.5em;
+}
+.page p.center ,
+.page p.center textarea {
+  text-align: center;
+}
+/* yellowish paper
+@media screen {
+  .page {
+    background-color: rgb(255,255,192);
+  }
+}*/
+</style>
+
+<script type="text/javascript"
+  src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+  crossorigin="anonymous"></script>
+<!--<script type="text/javascript" src="../../rulers.js" data-ref=".page" data-unit="cm"></script>-->
+
+</head>
+<body>
+
+<!-- If you want to create two separate/different pages,
+     but be more flexible (?) and not declare every "single-page" element. -->
+
+<div class="page page-us">
+
+  <p class="block">This is page #1.</p>
+
+  <p class="note">To insert an invisible pagebreak, use the following HTML code :
+    <textarea><div class="pagebreak"></div></textarea></p>
+
+  <p class="center"><i>(You cannot see it from your browser)</i></p>
+  <div class="pagebreak">oups</div>
+
+
+  <p class="block">This is page #2.</p>
+
+  <p class="note">To insert an visible pagebreak, use the following HTML code :
+    <textarea><div class="pagebreak visible"></div></textarea></p>
+
+  <div class="pagebreak visible"></div>
+
+
+  <p class="block">This is page #3.</p>
+
+  <p class="note">To insert an visible pagebreak, with text in the left margin, use the following HTML code :
+    <textarea><div class="pagebreak visible margin-left"></div></textarea></p>
+
+  <div class="pagebreak visible margin-left"></div>
+
+  <p class="block">This is page #4.</p>
+
+  <p class="note">To insert an visible pagebreak, with text in the right margin, use the following HTML code :
+    <textarea><div class="pagebreak visible margin-right"></div></textarea></p>
+
+  <div class="pagebreak visible margin-right"></div>
+
+  <p class="block">This is page #5.</p>
+
+</div><!-- PAGE -->
+
+</body>
+</html>
