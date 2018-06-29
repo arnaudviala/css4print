@@ -97,18 +97,15 @@ $(document).ready(function() {
 
     _addHTMLElements: function()
     {
-      var divRulerH = $('<div>').addClass("h");
-      var divRulerV = $('<div>').addClass("v");
-      var divRulerMenu = $('<ul>').addClass("menu").hide();
-      var divRulerCorner = $('<div>').addClass("corner").text('i');
+      var divRulerH = $('<div class="ruler h">');
+      var divRulerV = $('<div class="ruler v">');
+      var divRulerMenu = $('<ul class="ruler menu">').hide();
+      var divRulerCorner = $('<div class="ruler corner">').text('i');
 
-      var divRuler = $('<div>')
-        .addClass("ruler")
-        .append(divRulerV)
-        .append(divRulerH)
-        .append(divRulerMenu)
-        .append(divRulerCorner)
-        .appendTo($(document.body));
+      divRulerH.appendTo($(document.body));
+      divRulerV.appendTo($(document.body));
+      divRulerMenu.appendTo($(document.body));
+      divRulerCorner.appendTo($(document.body));
 
       var liCursorPosition = $('<li>')
         .append( $('<label>').text('Mouse:') )
@@ -178,7 +175,6 @@ $(document).ready(function() {
         .appendTo(divTicksV);
 
       // save HTML elements in an array
-      this._HTMLElements['divRuler'] = divRuler;
       this._HTMLElements['divRulerCorner'] = divRulerCorner;
       this._HTMLElements['divRulerMenu'] = divRulerMenu;
       this._HTMLElements['divRulerH'] = divRulerH;
@@ -320,7 +316,7 @@ $(document).ready(function() {
     },
 
     _clearTicks: function() {
-      var tmpContainer = this._HTMLElements['divRuler'];
+      var tmpContainer = this._HTMLElements['divRulerCorner'];
       this._HTMLElements['divTickMouseH'].hide().appendTo(tmpContainer);
       this._HTMLElements['divTickMouseV'].hide().appendTo(tmpContainer);
       this._HTMLElements['divTicksH'].empty();

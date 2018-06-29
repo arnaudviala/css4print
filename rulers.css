@@ -1,52 +1,48 @@
 /* First, to be sure not to forget, make the ruler invisible when printing */
 @media print {
-  .ruler /*TODEL,
-  .ruler .corner ,
-  .ruler .h ,
-  .ruler .v ,
-  .ruler .menu*/ {
+  .ruler.corner ,
+  .ruler.h ,
+  .ruler.v ,
+  .ruler.menu {
     display: none;
   }
 } /* @media print */
 
-.ruler ,
-.ruler .corner ,
-.ruler .h ,
-.ruler .v ,
-.ruler .menu {
+.ruler.corner ,
+.ruler.h ,
+.ruler.v ,
+.ruler.menu {
   border: none;
   position: fixed;
   top: 0px;
   left: 0px;
   box-sizing: border-box;
 }
-.ruler .corner ,
-.ruler .h ,
-.ruler .v {
+.ruler.corner ,
+.ruler.h ,
+.ruler.v {
   background-color: white;
   overflow: hidden;
 }
-.ruler ,
-.ruler .v {
+.ruler.v {
   bottom: 0px;
 }
-.ruler ,
-.ruler .h {
+.ruler.h {
   right: 0px;
 }
-.ruler .v ,
-.ruler .corner {
+.ruler.v ,
+.ruler.corner {
   width: 12px;
   border-right: 1px solid black;
 }
-.ruler .h ,
-.ruler .corner {
+.ruler.h ,
+.ruler.corner {
   height: 12px;
   border-bottom: 1px solid black;
 }
 
 /* temp hack
-.ruler .corner {
+.ruler.corner {
   resize: both;
   overflow: hidden;
   border-top: 1px solid black;
@@ -56,117 +52,117 @@
   width: 24px;
   height: 24px;
 } */
-.ruler .corner:hover {
+.ruler.corner:hover {
   background-color: #CCC;
   cursor: pointer;
 }
-.ruler .corner:active {
+.ruler.corner:active {
   background-color: red;
 }
-.ruler .corner {
+.ruler.corner {
   font-size: 65%;
   text-align: center;
 }
 
-.ruler .h .ticks ,
-.ruler .v .ticks ,
-.ruler .h .ticks s ,
-.ruler .v .ticks s {
+.ruler.h .ticks ,
+.ruler.v .ticks ,
+.ruler.h .ticks s ,
+.ruler.v .ticks s {
   position: absolute;
   border: none;
 }
-.ruler .h .ticks s ,
-.ruler .v .ticks s {
+.ruler.h .ticks s ,
+.ruler.v .ticks s {
   text-decoration: none;
 }
-.ruler .h .ticks s {
+.ruler.h .ticks s {
   bottom: 0px;
   /*width: 1px;*/
   border-left: 1px solid black;
   height: 0px;
 }
-.ruler .h .ticks s.t0 {
+.ruler.h .ticks s.t0 {
   height: 0%;
 }
-.ruler .h .ticks s.t2 {
+.ruler.h .ticks s.t2 {
   height: 20%;
 }
-.ruler .h .ticks s.t4 {
+.ruler.h .ticks s.t4 {
   height: 40%;
 }
-.ruler .h .ticks s.t6 {
+.ruler.h .ticks s.t6 {
   height: 60%;
 }
-.ruler .h .ticks s.t8 {
+.ruler.h .ticks s.t8 {
   height: 80%;
 }
-.ruler .h .ticks s.t10 {
+.ruler.h .ticks s.t10 {
   height: 100%;
 }
-.ruler .h .ticks s.sm {
+.ruler.h .ticks s.sm {
   height: 25%;
 }
-.ruler .h .ticks s.md {
+.ruler.h .ticks s.md {
   height: 50%;
 }
-.ruler .h .ticks s.lg ,
-.ruler .h .ticks s.cursor {
+.ruler.h .ticks s.lg ,
+.ruler.h .ticks s.cursor {
   height: 100%;
 }
-.ruler .v .ticks s {
+.ruler.v .ticks s {
   right: 0px;
   /*height: 1px;*/
   border-top: 1px solid black;
   width: 0px;
 }
-.ruler .v .ticks s.t0 {
+.ruler.v .ticks s.t0 {
   width: 0%;
 }
-.ruler .v .ticks s.t2 {
+.ruler.v .ticks s.t2 {
   width: 20%;
 }
-.ruler .v .ticks s.t4 {
+.ruler.v .ticks s.t4 {
   width: 40%;
 }
-.ruler .v .ticks s.t6 {
+.ruler.v .ticks s.t6 {
   width: 60%;
 }
-.ruler .v .ticks s.t8 {
+.ruler.v .ticks s.t8 {
   width: 80%;
 }
-.ruler .v .ticks s.t10 {
+.ruler.v .ticks s.t10 {
   width: 100%;
 }
-.ruler .v .ticks s.sm {
+.ruler.v .ticks s.sm {
   width: 25%;
 }
-.ruler .v .ticks s.md {
+.ruler.v .ticks s.md {
   width: 50%;
 }
-.ruler .v .ticks s.lg ,
-.ruler .v .ticks s.cursor {
+.ruler.v .ticks s.lg ,
+.ruler.v .ticks s.cursor {
   width: 100%;
 }
-.ruler .h .ticks s.cursor ,
-.ruler .v .ticks s.cursor {
+.ruler.h .ticks s.cursor ,
+.ruler.v .ticks s.cursor {
   border-color: red;
   z-index:  2;  /* so it's displayed above regular ticks */
 }
-.ruler .h .ticks s.cursor label,
-.ruler .v .ticks s.cursor label {
+.ruler.h .ticks s.cursor label,
+.ruler.v .ticks s.cursor label {
   background-color: rgba(255,255,255,0.75);
   color: red;
 }
-.ruler .h .ticks s label ,
-.ruler .v .ticks s label {
+.ruler.h .ticks s label ,
+.ruler.v .ticks s label {
   font-size: 65%;
   padding-left: 1px;
   color: #888;
 }
-.ruler .h .ticks s label {
+.ruler.h .ticks s label {
   height: 100%;
 }
-.ruler .v .ticks s label {
+.ruler.v .ticks s label {
   display: block;
   word-wrap: break-word;
   line-height: 80%;
@@ -179,7 +175,7 @@ body {
   cursor: crosshair;
 }*/
 /*
-.ruler .v .ticks s label {
+.ruler.v .ticks s label {
   position: absolute;
   text-align: right;
   padding-left: 1px;
@@ -193,7 +189,7 @@ body {
 }
 */
 
-.ruler .menu {
+.ruler.menu {
   margin: 0;
   top: 14px;
   left: 14px;
@@ -203,24 +199,24 @@ body {
   padding: 5px;
   background-color: white;
 }
-.ruler .menu a.close {
+.ruler.menu a.close {
   position: absolute;
   top: 4px;
   right: 4px;
   cursor: pointer;
 }
-.ruler .menu a.close:hover {
+.ruler.menu a.close:hover {
   font-weight: bold;
 }
-.ruler .menu li {
+.ruler.menu li {
   margin-top: 3px;
   margin-bottom: 3px;
   list-style-type: none;
 }
-.ruler .menu label {
+.ruler.menu label {
   width: 4em;
   display: inline-block;
 }
-.ruler .menu .cursor-position {
+.ruler.menu .cursor-position {
   width: 6em;
 }
