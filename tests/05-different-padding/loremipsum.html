@@ -1,0 +1,138 @@
+<html>
+<head>
+<meta charset="UTF-8" />
+
+<link rel="stylesheet" type="text/css" href="../../paging.css">
+<!--<link rel="stylesheet" type="text/css" href="../../rulers.css">-->
+<link rel="stylesheet" type="text/css" href="../tests-common.css">
+<link rel="stylesheet" type="text/css" href="../../printing-a4.css" media="print">
+
+<title>Different paddings</title>
+
+<!--<script type="text/javascript"
+  src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+  crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="../../rulers.js" data-ref=".page" data-unit="cm"></script>-->
+
+<style type="text/css">
+.page .content {
+  border: 1px dashed grey;
+  padding:1cm;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+}
+.page .content center {
+  float: center;
+  margin-top: -1cm;
+}
+.page.padding-custom {
+  padding-top: 0.5in;
+  padding-left: 0.5in;
+  padding-right: 0.5in;
+  padding-bottom: 0.5in;
+}
+</style>
+
+</head>
+<body>
+
+  <div class="page page-a4 single-page padding-10mm">
+
+    <div class="content">
+      <center>(the dashed border delimits the content zone)</center><br/><br/>
+
+      This is an A4 page, with a 1cm padding, declared as is:
+      <xmp><div class="page page-a4 single-page padding-10mm">
+        ...</xmp>
+    </div>
+
+  </div><!-- PAGE -->
+
+  <div class="page page-a4 single-page padding-5mm">
+
+    <div class="content">
+        This is an A4 page, with a 5mm padding, declared as is:
+        <xmp><div class="page page-a4 single-page padding-5mm">
+          ...</xmp>
+    </div>
+
+  </div><!-- PAGE -->
+
+  <div class="page page-a4 single-page padding-15mm">
+
+    <div class="content">
+        This is an A4 page, with a 15mm padding, declared as is:
+        <xmp><div class="page page-a4 single-page padding-15mm">
+          ...</xmp>
+    </div>
+
+  </div><!-- PAGE -->
+
+  <div class="page page-a4 single-page padding-20mm">
+
+    <div class="content">
+        This is an A4 page, with a 20mm padding, declared as is:
+        <xmp><div class="page page-a4 single-page padding-20mm">
+          ...</xmp>
+    </div>
+
+  </div><!-- PAGE -->
+
+  <div class="page page-a4 single-page padding-1in">
+
+    <div class="content">
+        This is an A4 page, with one inch padding, declared as is:
+        <xmp><div class="page page-a4 single-page padding-1in">
+          ...</xmp>
+    </div>
+
+  </div><!-- PAGE -->
+
+  <div class="page page-a4 single-page padding-none">
+
+    <div class="content">
+        This is an A4 page, with no padding, declared as is:
+        <xmp><div class="page page-a4 single-page padding-none">
+          ...</xmp>
+    </div>
+
+  </div><!-- PAGE -->
+
+  <div class="page page-a4 single-page padding-custom">
+
+    <div class="content">
+        This is an A4 page, with a custom padding (of half an inch in this example), declared as is:
+        <xmp><div class="page page-a4 single-page padding-custom">
+          ...</xmp>
+      <br/>
+      But you have to write the CSS rules for the class <tt>padding-custom</tt>.<br/>
+      Here is an example :
+      <xmp>.page.padding-custom {
+  padding-top: 0.5in;
+  padding-left: 0.5in;
+  padding-right: 0.5in;
+  padding-bottom: 0.5in;
+}
+/* if you're using some pagebreak, you'll have to define those rules too */
+@media screen {
+  .page.padding-custom div.pagebreak.visible {
+    margin-left: -0.5in;    /* minus page's padding-left */
+    margin-right: -0.5in;   /* minus page's padding-right */
+    padding-top: 0.5in;     /* same as page's padding-bottom */
+    padding-bottom: 0.5in;  /* same as page's padding-top */
+  }
+}
+@media print {
+  .page.padding-custom div.pagebreak {
+    margin-top: 0.5in;      /* same as page's padding-top */
+  }
+}</xmp>
+    </div>
+
+  </div><!-- PAGE -->
+
+</body>
+</html>

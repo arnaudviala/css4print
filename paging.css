@@ -66,11 +66,9 @@ body {
 /* TODO: move the "padding" rules into another class... */
 .page-a4 {          /* A4 is 21cm x 29.7cm  */
   width: 21cm;
-  padding: 1cm;
 }
 .page-us {          /* us aka letter is 8.5in x 11in  */
   width: 8.5in;
-  padding: 0.40in;  /* ~1cm */
 }
 /* setting the "height" is only necessary/useful for single page documents */
 .page-a4.single-page {
@@ -96,6 +94,13 @@ body {
 }
 **/
 
+.page , /* default padding is 10mm */
+.page.padding-10mm {        padding: 10mm;      }
+.page.padding-none {        padding: 0;         }
+.page.padding-5mm  {        padding: 5mm;       }
+.page.padding-15mm {        padding: 15mm;      }
+.page.padding-20mm {        padding: 20mm;      }
+.page.padding-1in  {        padding: 1in;       }
 
 .page p {
   margin: 0;
@@ -121,11 +126,51 @@ body {
     border: none;
     display: block;
     box-sizing: content-box;
-    margin-left: -0.40in;  /* same as page's padding-left */
-    margin-right: -0.40in; /* same as page's padding-right */
-    padding-top: 0.40in;   /* same as page's margin-bottom */
-    padding-bottom: 0.40in;/* same as page's margin-top */
     position: relative;
+  }
+  /* Specific rules to circumvent the page's padding
+   * | pagebreak's ... has to be equal to page's
+   * |  - margin-left          ->         - padding-left
+   * |  - margin-right         ->         - padding-left
+   * |  - padding-top          ->         - padding-bottom
+   * |  - padding-bottom       ->         - padding-top
+   */
+  .page div.pagebreak.visible, /* default padding is 10mm */
+  .page.padding-10mm div.pagebreak.visible {
+    margin-left: -10mm;
+    margin-right: -10mm;
+    padding-top: 10mm;
+    padding-bottom: 10mm;
+  }
+  .page.padding-5mm div.pagebreak.visible {
+    margin-left: -5mm;
+    margin-right: -5mm;
+    padding-top: 5mm;
+    padding-bottom: 5mm;
+  }
+  .page.padding-15mm div.pagebreak.visible {
+    margin-left: -15mm;
+    margin-right: -15mm;
+    padding-top: 15mm;
+    padding-bottom: 15mm;
+  }
+  .page.padding-20mm div.pagebreak.visible {
+    margin-left: -20mm;
+    margin-right: -20mm;
+    padding-top: 20mm;
+    padding-bottom: 20mm;
+  }
+  .page.padding-1in div.pagebreak.visible {
+    margin-left: -1in;
+    margin-right: -1in;
+    padding-top: 1in;
+    padding-bottom: 1in;
+  }
+  .page.padding-none div.pagebreak.visible {
+    margin-left: 0;
+    margin-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
   }
   /* make a translucid grey background-color if mouse is over */
   div.pagebreak.visible:hover {
@@ -168,12 +213,32 @@ body {
      * for the margin of the next element in the HTML flow.
      * [don't understand exactly why, it's mandatory :-(] */
 
+    border: none;
+  }
+
+  /* The "margin-top" value for div.pagebreak
+   *  has to be equals to
+   *  the "padding-top" value for ".page"
+   */
+  .page div.pagebreak, /* default padding is 10mm */
+  .page.padding-10mm div.pagebreak {
+    margin-top: 10mm;
+  }
+  .page.padding-5mm div.pagebreak {
+    margin-top: 5mm;
+  }
+  .page.padding-15mm div.pagebreak {
+    margin-top: 15mm;
+  }
+  .page.padding-20mm div.pagebreak {
+    margin-top: 20mm;
+  }
+  .page.padding-1in div.pagebreak {
+    margin-top: 1in;
+  }
+  .page.padding-none div.pagebreak {
     /* for .page with no padding, it's still necessary to use a very small margin
      * as thin as 0.001cm... */
     margin-top: 0.001cm;
-    border: none;
-
-    /* for .page-us with padding, margin-top as to be set to the same padding */
-    margin-top: 0.40in;
   }
 }
