@@ -3,6 +3,7 @@
 <meta charset="UTF-8" />
 
 <link rel="stylesheet" type="text/css" href="../../paging.css">
+<link rel="stylesheet" type="text/css" href="../tests-common.css">
 <!--<link rel="stylesheet" type="text/css" href="../../rulers.css">-->
 <link rel="stylesheet" type="text/css" href="../../printing-letter.css" media="print">
 
@@ -14,26 +15,9 @@
   padding: 2cm;
   margin-top:9cm;
 }
-.page p.note {
+.page div.note {
   margin-top: 1cm;
   padding: 0 2cm;
-  border: none;
-}
-.page p.note textarea {
-  width: 100%;
-  padding: 0.5em;
-  resize: none;
-  box-sizing: border-box;
-  height: 2.2em;
-  background-color: #EEE;
-  background-color: rgba(192,192,192,0.25);
-  border: none;
-  border-left: 3px solid #CCC;
-  margin-bottom: 0.5em;
-}
-.page p.center ,
-.page p.center textarea {
-  text-align: center;
 }
 /* yellowish paper
 @media screen {
@@ -59,32 +43,42 @@
 
   <p class="block">This is page #1.</p>
 
-  <p class="note">To insert an invisible pagebreak, use the following HTML code :
-    <textarea><div class="pagebreak"></div></textarea></p>
+  <div class="note">
+    To insert an invisible pagebreak, use the following HTML code :
+    <xmp><div class="pagebreak"></div></xmp>
+  </div>
 
-  <p class="center"><i>(You cannot see it from your browser)</i></p>
-  <div class="pagebreak">oups</div>
+  <!-- Plain old school <center> tag !! Sorry about that. -->
+  <center>(You cannot see it from your browser)</center>
+
+  <div class="pagebreak"></div>
 
 
   <p class="block">This is page #2.</p>
 
-  <p class="note">To insert an visible pagebreak, use the following HTML code :
-    <textarea><div class="pagebreak visible"></div></textarea></p>
+  <div class="note">
+    To insert an visible pagebreak, use the following HTML code :
+    <xmp><div class="pagebreak visible"></div></xmp>
+  </div>
 
   <div class="pagebreak visible"></div>
 
 
   <p class="block">This is page #3.</p>
 
-  <p class="note">To insert an visible pagebreak, with text in the left margin, use the following HTML code :
-    <textarea><div class="pagebreak visible margin-left"></div></textarea></p>
+  <div class="note">
+    To insert an visible pagebreak, with text in the left margin, use the following HTML code :
+    <xmp><div class="pagebreak visible margin-left"></div></xmp>
+  </div>
 
   <div class="pagebreak visible margin-left"></div>
 
   <p class="block">This is page #4.</p>
 
-  <p class="note">To insert an visible pagebreak, with text in the right margin, use the following HTML code :
-    <textarea><div class="pagebreak visible margin-right"></div></textarea></p>
+  <div class="note">
+    To insert an visible pagebreak, with text in the right margin, use the following HTML code :
+    <xmp><div class="pagebreak visible margin-right"></div></xmp>
+  </div>
 
   <div class="pagebreak visible margin-right"></div>
 
