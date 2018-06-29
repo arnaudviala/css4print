@@ -17,21 +17,21 @@
   crossorigin="anonymous"></script>
 
 <script>
-// populate the 'vcards' DOM elements
 $(function() {
-  var vcards = $('#vcards');
-  var repeat_str = vcards.data("repeat");
-  var repeat_i = parseInt(repeat_str);
-  if ( ""+repeat_i == repeat_str )
-  {
-    // 'repeat_i' is a integer number
-    // we have to repeat the first '.vcard'
-    var vcard = vcards.children(".vcard").first();
-    for( var i=1 ; i<repeat_i ; i++ )
+  // clone() every DOM element with the "data-clone" attribute
+  $("[data-clone]").each( function(i,elem) {
+    var clone = $(elem).data("clone");
+    var count = parseInt(clone);
+    if ( ""+count == clone )  // data-clone attr is a pure integer
     {
-      vcard.clone().appendTo( vcards );
+      $(elem).removeData("clone").removeAttr("data-clone");
+      for( var i=1 ; i<count ; i++ )
+      {
+        $(elem).clone().insertAfter( $(elem) );
+      }
     }
-  }
+    // else { ... } other formats for "data-clone" attribute ?
+  });
 });
 </script>
 </head>
@@ -41,9 +41,9 @@ $(function() {
 
   <i style="display:block;text-align:center;">This is a "letter" document containing programmatically-repeated business cards</i>
 
-  <div id="vcards" data-repeat="8" class="w-flex-sb">
+  <div id="vcards" class="w-flex-sb">
 
-    <div class="vcard w-padding">
+    <div class="vcard w-padding" data-clone="6">
 
       <h1 id="name">
         <span id="firstname">John</span>
