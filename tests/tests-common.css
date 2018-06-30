@@ -11,7 +11,7 @@ xmp {
   padding: 0.5em;
 }
 hr {
-  margin: 1cm 0;
+  margin: 0.5cm 0;
   height: 0px;
   border: none;
   border-top: 1px solid #CCC;
@@ -22,4 +22,24 @@ hr {
   border: 1px dashed grey;
   padding:2cm;
   margin-top:9cm;
+}
+
+/* A <div "abstract"> is often at the beginning of the document,
+ * explaining the example and the purpose of the test. */
+.page .abstract.absolute {
+  border: none;
+  position: absolute;
+  left: 1cm;
+  right: 1cm;
+  padding: 0.5cm 0.5cm;
+}
+
+.test-check {
+  padding-left: 0.45cm;
+}
+.test-check:before {
+  margin-left: -0.45cm;
+  content:"/!\\ Check on the PDF:";
+  display: block;
+  font-weight: bold;
 }

@@ -36,10 +36,35 @@
 </head>
 <body>
 
-<!-- If you want to create two separate/different pages,
-     but be more flexible (?) and not declare every "single-page" element. -->
+<!-- If you want to create several pages, but without declaring every
+  "single-page" element. Use a unique "page" <div> that would be printed
+  on several pages.
+  In such a case, to force a page-break in the DOM flow, simply insert a
+  <div class="pagebreak></div> element. -->
 
 <div class="page page-letter">
+
+  <div class="abstract absolute">
+    This document contains 5 pages, separated by 4 different flavors of page-breaks.<br/>
+    <br/>
+    <div class="test-check">
+    On the generated PDF, the position of every "This is page #..." frame
+    must be identical on all pages. The "pagebreak" SHALL NOT disturb the
+    position of elements.</div>
+    <br/>
+    All page-breaks are invisible on print jobs. For "wysiwyg" purpose, some are
+    visible in the browser. Here are the 4 different flavors:
+    <ul>
+    <li><tt>invisible</tt>
+      <small>[between pages #1 and #2]</small></li>
+    <li><tt>visible</tt>
+      <small>[between pages #2 and #3]</small></li>
+    <li><tt>visible</tt> + <tt>margin-left</tt> (label in the left side)
+      <small>[between pages #3 and #4]</small></li>
+    <li><tt>visible</tt> + <tt>margin-left</tt> (label in the right side)
+      <small>[between pages #4 and #5]</small></li>
+    </ul>
+  </div>
 
   <p class="block">This is page #1.</p>
 
@@ -49,7 +74,7 @@
   </div>
 
   <!-- Plain old school <center> tag !! Sorry about that. -->
-  <center>(You cannot see it from your browser)</center>
+  <center>(You cannot see this invisible one from your browser)</center>
 
   <div class="pagebreak"></div>
 
