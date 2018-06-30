@@ -106,7 +106,6 @@ $(document).ready(function() {
                       || this._OPTIONS['autoshow'] == "horiz" );
       var bShowVert  = ( this._OPTIONS['autoshow'] == "both"
                       || this._OPTIONS['autoshow'] == "vert" );
-      console.log(this._OPTIONS);
       var divRulerH = $('<div class="ruler h">');
       var divRulerV = $('<div class="ruler v">');
       var divRulerMenu = $('<ul class="ruler menu">').hide();
