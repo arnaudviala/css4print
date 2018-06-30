@@ -50,20 +50,6 @@ body {
   -webkit-print-color-adjust: exact;
 }
 
-
-/* If your job is going to be printed on colored paper,
- * then you can add a specific color here, for "wysiwyg" purpose.
- * Using @media screen, the background-color won't be printed.
- * (avoid alpha color if you don't want to see the stripped 'body')
- */
-/* For TEST PURPOSE
-@media screen {
-  .page {
-    background-color: rgba(255,255,128,1.0);
-  }
-} */
-
-/* TODO: move the "padding" rules into another class... */
 .page-a4 {          /* A4 is 21cm x 29.7cm  */
   width: 21cm;
 }
