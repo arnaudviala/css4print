@@ -8,8 +8,8 @@ body {
     #CCC 20px
   );
   margin: 0;
-  padding-top: 1cm;
-  padding-bottom: 1cm;
+  padding-top: 0.5cm;
+  padding-bottom: 0.5cm;
 }
 
 @media print {
@@ -79,6 +79,12 @@ body {
   height: 8.5in;
 }
 **/
+@media screen {
+  .page {
+    margin-top: 0.5cm;
+    margin-bottom: 0.5cm;
+  }
+}
 
 .page , /* default padding is 10mm */
 .page.padding-10mm {        padding: 10mm;      }
