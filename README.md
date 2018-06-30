@@ -4,7 +4,13 @@ Toolkit composed of small CSS or JS files to create HTML5 documents whose goal i
 
 Using those CSS files, it becomes very easy to create a single page document programmatically (using HTML5 and CSS) instead of using a graphical design editor. Multiple pages is also supported.
 
-Look at the example in the [tests/](tests/) directory.
+Look at the demonstration web page : [Tests and Examples](https://arnaudviala.github.io/css4print/tests/).
+
+I discover -- after working on those CSS -- another project with a similar goal. It is pure-CSS. It is simpler, smaller (and depending on use-cases easier to use) : [cognitom/paper-css](https://github.com/cognitom/paper-css).
+
+## Quick Usage
+
+(to be written)
 
 ## Early versions
 
