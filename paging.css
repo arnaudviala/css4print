@@ -102,10 +102,6 @@ body {
 .page.padding-20mm {        padding: 20mm;      }
 .page.padding-1in  {        padding: 1in;       }
 
-.page p {
-  margin: 0;
-  padding: 0;
-}
 
 
 
