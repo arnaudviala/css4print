@@ -5,6 +5,9 @@ tt, xmp {
 tt {
   padding: 0.25em 0.5em;
 }
+tt.nowrap {
+  white-space: nowrap;
+}
 xmp {
   border: none;
   border-left: 3px solid #CCC;
@@ -26,14 +29,18 @@ hr {
 
 /* A <div "abstract"> is often at the beginning of the document,
  * explaining the example and the purpose of the test. */
-.page .abstract.absolute {
+.page .abstract {
   border: none;
-  position: absolute;
   left: 1cm;
   right: 1cm;
   padding: 0.5cm 0.5cm;
 }
-
+.page .abstract.absolute {
+  position: absolute;
+}
+.page .abstract.center {
+  text-align: center;
+}
 .test-check {
   padding-left: 0.45cm;
 }

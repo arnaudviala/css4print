@@ -4,6 +4,7 @@
 
 <link rel="stylesheet" type="text/css" href="../../paging.css">
 <link rel="stylesheet" type="text/css" href="../../crop-box.css">
+<link rel="stylesheet" type="text/css" href="../tests-common.css">
 <link rel="stylesheet" type="text/css" href="../../printing-letter.css" media="print">
 
 <title>crop-marks-simple</title>
@@ -30,6 +31,12 @@
 
 <div class="page page-letter single-page">
 
+  <div class="abstract center">
+    The green border is only displayed on screen, in your browser.
+    When printed, it is set to white.<br/>
+    Press <tt>Ctrl+P</tt> to have a look at the printed preview.
+  </div>
+
 <div class="textblock background crop-box">
   Lorem ipsum
   dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
@@ -42,12 +49,12 @@
 <div class="textblock transparent crop-box">
   However, applying the <code>crop-box</code> class won't work well for transparent object:
   the cropping lines are visible.<br/>
-  - In some cases, it might not be annoying.<br/>
-  - In some others, considering forcing a background to your element.<br/>
+  - In some cases, it might not be annoying or you can still force a white
+    background to your element.<br/>
+  - In some other cases, <tt>crop-box.css</tt> is not sufficient. That's
+    where another tool comes to rescue : <tt class="nowrap">crop-lines.{js/css}</tt><br/>
   <br/>
-  [...], reprehenderit in voluptate velit esse cillum dolore eu
-  fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt
-  in culpa qui officia deserunt mollit anim id est laborum.</div>
+  [...], sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
 
 </div><!-- PAGE -->
 </body>
