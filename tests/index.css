@@ -1,0 +1,235 @@
+body {
+  margin: 0; padding: 0;
+  font: 400 15px/1.3 helvetica,arial,freesans,clean,sans-serif;
+}
+header {
+  background-color: black;
+  color: white;
+  width: 100%;
+  z-index: 20;
+  text-align: left;
+  padding-left: 3em;
+  height: 2.5rem;
+  box-sizing: border-box;
+}
+header {
+  color: black;
+  border-bottom: 1px solid #888;
+  background-color: #fafafa;
+  background: -webkit-linear-gradient(#fafafa,#eaeaea);
+}
+h1, h2 {
+  display: inline-block;
+  margin: 0;
+  margin-top: 0.2rem;
+}
+h1 {
+  font-size: 160%;
+}
+h2 {
+  font-size: 130%;
+  font-weight: normal;
+}
+/*h1 {
+  font-size: 150%;
+}*/
+header #btn-menu ,
+header #btn-print ,
+header #scale-factor {
+  position: absolute;
+  top: 0.25rem;
+  height: 2rem;
+  border: 1px solid #888;
+  border: none;
+  border: 1px solid rgba(0,0,0,0.05);
+  background: transparent;
+  cursor: pointer;
+}
+header #btn-menu {
+  left: 0.25rem;
+  width: 2rem;
+}
+header #btn-print ,
+header #scale-factor {
+  color: black;
+  right: 0.25rem;
+  width: 5rem;
+  font-weight: bold;
+}
+header #btn-print {
+  right: 6rem;
+}
+header #btn-menu:hover ,
+header #btn-print:hover ,
+header #scale-factor:hover {
+  border-color: #4183c4;
+}
+header #btn-menu:active ,
+header #btn-print:active ,
+header #scale-factor:active {
+  border-color: #4183c4;;
+  color: #4183c4;;
+}
+header #btn-menu svg {
+  fill: black;
+  stroke: none;
+}
+header #btn-menu:hover svg ,
+header #btn-menu:active svg {
+  fill: #4183c4;
+  stroke: none;
+}
+header #scale-factor option {
+  color: #4183c4;;
+  /*background-color: black;*/
+  font-weight: bold;
+}
+
+div.content {
+  padding: none;
+  border: none;
+  position: absolute;
+  z-index: 10;
+  top: 2.5rem;
+  bottom: 0px;
+  right: 0px;
+  display: inline-block;
+  -webkit-transition-duration: 0.5s;
+  overflow: hidden;
+  text-align: center;
+}
+body.hide-menu div.content {
+  left:0px;
+}
+
+/* following values is the border between <nav> and <div "content"> */
+div.content {   left: 15rem; }
+nav {           width: 15rem;  }
+
+
+div.content iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+div.content iframe.scale-75 ,
+div.content iframe.scale-50 ,
+div.content iframe.scale-25 {
+  -moz-transform-origin: 0 0;
+  -o-transform-origin: 0 0;
+  -webkit-transform-origin: 0 0;
+}
+div.content iframe.scale-75 {
+  width: 133%;
+  height: 133%;
+  -ms-zoom: 0.75;
+  -moz-transform: scale(0.75);
+  -o-transform: scale(0.75);
+  -webkit-transform: scale(0.75);
+}
+div.content iframe.scale-50 {
+  width: 200%;
+  height: 200%;
+  -ms-zoom: 0.50;
+  -moz-transform: scale(0.50);
+  -o-transform: scale(0.50);
+  -webkit-transform: scale(0.50);
+}
+div.content iframe.scale-25 {
+  width: 400%;
+  height: 400%;
+  -ms-zoom: 0.25;
+  -moz-transform: scale(0.25);
+  -o-transform: scale(0.25);
+  -webkit-transform: scale(0.25);
+}
+
+
+nav {
+  margin: 0;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  position: absolute;
+  top: 2.5rem;
+  bottom: 0px;
+  left: 0px;
+  display: inline-block;
+  border: none;
+  z-index: 1;
+  background-color: #EEE;
+  overflow-y: scroll;
+  overflow-x: auto;
+  -webkit-transition-duration: 0.5s;
+}
+body.hide-menu nav {
+  width: 0;
+  overflow: hidden;
+  padding: 0;
+  -webkit-transition-duration: 0.5s;
+}
+
+/* TODO: Add some responsive CSS for small screens
+ *  although there is no real interest in looking at those "tests/" pages
+ *  from a phone...
+ */
+nav ul {
+  margin: 0;
+  padding: 0;
+}
+nav ul.folded a ,
+nav ul.folded small {
+  display: none;
+}
+nav label ,
+nav small ,
+nav a {
+  display: block;
+  padding: 0.2rem 0.4rem;
+}
+nav a {
+  margin-left: 0.4rem;
+}
+nav a ,
+nav a:visited {
+  color: #1e9fd6;
+  color: #4183c4; /* from https://help.github.com/ */
+}
+nav label ,
+nav small {
+  color: #444;
+}
+nav label {
+  cursor: pointer;
+  padding-top: 0.75rem;
+  border-bottom: 1px solid #CCC;
+}
+nav a:hover {
+  background-color: #DDD;
+}
+
+nav a i.new-window {
+  width: 12px;
+  height: 12px;
+  margin-left: 1ex;
+  /*position: absolute;*/
+  margin-top: 2px;
+  /*right: 0px;*/
+  display: inline-block;
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"> <path fill="%23fff" stroke="%2336c" d="M1.5 4.518h5.982V10.5H1.5z"/> <path fill="%2336c" d="M5.765 1H11v5.39L9.427 7.937l-1.31-1.31L5.393 9.35l-2.69-2.688 2.81-2.808L4.2 2.544z"/> <path fill="%23fff" d="M9.995 2.004l.022 4.885L8.2 5.07 5.32 7.95 4.09 6.723l2.882-2.88-1.85-1.852z"/> </svg>');
+  background-repeat: no-repeat;
+}
+
+nav ul label:before {
+  content: " ";
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-right: 4px;
+  transform: rotate(0deg);
+  -webkit-transition-duration: 0.2s;
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"><path fill="%23000" stroke="%23000" d="M2 6 L6 10 L10 6"/></svg>');
+}
+
+nav ul.folded label:before {
+  transform: rotate(-45deg);
+}
