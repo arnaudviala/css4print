@@ -4,15 +4,11 @@
 
 <link rel="stylesheet" type="text/css" href="../../paging.css">
 <link rel="stylesheet" type="text/css" href="../../printing-letter.css" media="print">
+<link rel="stylesheet" type="text/css" href="../tests-common.css">
 
 <title>Two separate pages</title>
 
 <style type="text/css">
-.page p {
-  border: 1px dashed grey;
-  padding:2cm;
-  margin-top:9cm;
-}
 </style>
 
 </head>
@@ -23,7 +19,25 @@
 
 <div id="first" class="page page-letter single-page">
 
-<p>This is page #1.<br/><br/>
+  <div class="abstract absolute">
+    This is a two pages document. The two pages are clearly distinct in the
+    browser.<br/>
+    <br/>
+    <div class="test-check">
+    On the generated PDF, the position of the all <i>"Lorem ipsum..."</i> frames
+    must be identical on all pages.</div>
+
+    <hr/>
+    This is achieved using two <tt>&lt;div&gt;</tt> elements :
+    <xmp><div id="first" class="page page-letter single-page">
+  ...
+</div>
+<div id="second" class="page page-letter single-page">
+  ...
+</div></xmp>
+  </div>
+
+<p class="latin">This is page #1.<br/><br/>
   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
   tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
   quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -36,7 +50,7 @@
 
 <div id="second" class="page page-letter single-page">
 
-  <p>This is page #2.<br/><br/>
+  <p class="latin">This is page #2.<br/><br/>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
     tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
     quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
