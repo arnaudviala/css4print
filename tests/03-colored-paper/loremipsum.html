@@ -15,9 +15,7 @@
   }
 }
 .page div {
-  border: 1px dashed grey;
   padding:2cm;
-  margin-top:9cm;
 }
 </style>
 
@@ -26,11 +24,13 @@
 
 <div class="page page-letter single-page">
 
-<div>If your work is going to be printed on colored paper, for "wysiwyg" purpose
-  you can add a specific color in a small <tt>&lt;style&gt;</tt> tag at the
-  beginning of your document.
-  Using @media screen, the background-color won't be present on the print job,
-  or the printed PDF.<br/>
+<div>If your work is going to be printed on color paper, you can simulate the
+  result in your browser by specifying a background color that would be visible
+  only on screen (not on print jobs).
+  <hr/>
+  Simply add the following <tt>CSS</tt> rule at the beginning of your document.
+  Using <tt>@media&nbsp;screen</tt>, the background-color won't be present on the print job,
+  or the generated PDF.<br/>
   <xmp>@media screen {
   .page {
     background-color: rgb(255,255,192);
