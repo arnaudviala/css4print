@@ -64,6 +64,30 @@
   text-align: center;
 }
 
+.ruler.corner {
+  top: 1px;
+  left: 1px;
+  border: 1px solid black;
+  color: white;
+}
+.ruler.corner:before {
+  content:"";
+  border-left: 1px solid black;
+  position: absolute;
+  top: 0px;
+  left: 2px;
+  bottom: 0px;
+}
+.ruler.corner:after {
+  content:" ";
+  border-top: 1px solid black;
+  position: absolute;
+  top: 2px;
+  left: 0px;
+  right: 0px;
+}
+
+
 .ruler.h .ticks ,
 .ruler.v .ticks ,
 .ruler.h .ticks s ,

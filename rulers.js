@@ -23,7 +23,8 @@ $(document).ready(function() {
     // default options
     _OPTIONS: {
       unit: "px",
-      ref:  "body"
+      ref:  "body",
+      autoshow: "none"  /* (none|horiz|vert|both) */
     },
 
     // contains the conversion ratio between "cm" or "in" to "pixels"
@@ -97,16 +98,33 @@ $(document).ready(function() {
 
     _addHTMLElements: function()
     {
+      var bShowHoriz = ( this._OPTIONS['autoshow'] == "both"
+                      || this._OPTIONS['autoshow'] == "horiz" );
+      var bShowVert  = ( this._OPTIONS['autoshow'] == "both"
+                      || this._OPTIONS['autoshow'] == "vert" );
+      console.log(this._OPTIONS);
       var divRulerH = $('<div class="ruler h">');
       var divRulerV = $('<div class="ruler v">');
       var divRulerMenu = $('<ul class="ruler menu">').hide();
-      var divRulerCorner = $('<div class="ruler corner">').text('i');
+      var divRulerCorner = $('<div class="ruler corner">').text(':');
+
+      if ( !bShowHoriz ) divRulerH.hide();
+      if ( !bShowVert ) divRulerV.hide();
 
       divRulerH.appendTo($(document.body));
       divRulerV.appendTo($(document.body));
       divRulerMenu.appendTo($(document.body));
       divRulerCorner.appendTo($(document.body));
 
+      var chkHoriz = $('<input type="checkbox" data-ruler="horiz">')
+        .prop('checked', bShowHoriz);
+      var chkVert = $('<input type="checkbox" data-ruler="vert">')
+        .prop('checked', bShowVert);
+      var liShow = $('<li>')
+        .append( $('<label>').text('Show:') )
+        .append( $('<label>').text('Horiz.').prepend(chkHoriz) )
+        .append( $('<label>').text('Vert.').prepend(chkVert) )
+        .appendTo(divRulerMenu);
       var liCursorPosition = $('<li>')
         .append( $('<label>').text('Mouse:') )
         .append( $('<label>').addClass("cursor-position") )
@@ -129,6 +147,12 @@ $(document).ready(function() {
       var self = this;
       list.on('change',function(){
         self._onUnitChange( $(this).val() );
+      });
+      chkHoriz.on('change', function() {
+        self._onShowChange($(this).is(':checked'), $(this).data("ruler"));
+      });
+      chkVert.on('change', function() {
+        self._onShowChange($(this).is(':checked'), $(this).data("ruler"));
       });
 
       var note = $('<sub>')
@@ -195,6 +219,17 @@ $(document).ready(function() {
       var urlParams = new URLSearchParams(window.location.search);
       urlParams.set('ruler-unit', this._OPTIONS['unit']);
       window.location.search = urlParams.toString(); */
+    },
+
+    _onShowChange: function( val, name ) {
+      if ( name == "horiz" )
+      {
+        this._HTMLElements['divRulerH'].toggle();
+      }
+      else if ( name == "vert" )
+      {
+        this._HTMLElements['divRulerV'].toggle();
+      }
     },
 
     _registerWindowEvents: function()
