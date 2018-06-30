@@ -44,6 +44,14 @@
     <div class="content">
       <center>(the dashed border delimits the content zone)</center><br/><br/>
 
+      There is different padding presets to apply on pages : <tt>10mm</tt>
+      (which is the default), <tt>5mm</tt>, <tt>15mm</tt>, <tt>20mm</tt>,
+      <tt>1in</tt> and <tt>none</tt> (in which there's no padding). It is also
+      possible to setup your own custom padding.<br/>
+      <br/>
+      This document contains 7 pages with a different padding value. The last
+      page show a "custom" padding of &half;-inch.
+      <hr/>
       This is an A4 page, with a 1cm padding, declared as is:
       <xmp><div class="page page-a4 single-page padding-10mm">
         ...</xmp>
@@ -130,6 +138,7 @@
     margin-top: 0.5in;      /* same as page's padding-top */
   }
 }</xmp>
+(note: you can use any classname of your choice, <tt>padding-whatever</tt> would have worked too.)
     </div>
 
   </div><!-- PAGE -->
