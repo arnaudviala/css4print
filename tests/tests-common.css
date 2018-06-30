@@ -1,7 +1,25 @@
-xmp {
-  padding: 0.5em;
+tt, xmp {
   background-color: rgba(192,192,192,0.25);
+  margin: 0.5em 0;
+}
+tt {
+  padding: 0.25em 0.5em;
+}
+xmp {
   border: none;
   border-left: 3px solid #CCC;
-  margin: 0.5em 0;
+  padding: 0.5em;
+}
+hr {
+  margin: 1cm 0;
+  height: 0px;
+  border: none;
+  border-top: 1px solid #CCC;
+}
+
+/* This is the lorem-ipsum block, let's put it in the middle of the page. */
+.page p.latin {
+  border: 1px dashed grey;
+  padding:2cm;
+  margin-top:9cm;
 }
