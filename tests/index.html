@@ -179,6 +179,10 @@ $(document).ready( function()
   nav.find('label').on('click',function(){
     $(this).closest('ul').toggleClass('folded');
   });
+  nav.find('a').on('click',function(){
+    nav.find('a.current').removeClass("current");
+    $(this).addClass("current");
+  });
   nav.find('i.new-window').on('click', function() {
     var href = $(this).closest('a').attr('href');
     window.open( href, "_blank" );

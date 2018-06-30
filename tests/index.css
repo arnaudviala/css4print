@@ -147,7 +147,7 @@ div.content iframe.scale-25 {
 
 nav {
   margin: 0;
-  padding: 0.5rem;
+  padding: 0 0.5rem 1rem 0.5rem;
   box-sizing: border-box;
   position: absolute;
   top: 2.5rem;
@@ -188,6 +188,8 @@ nav a {
 }
 nav a {
   margin-left: 0.4rem;
+  margin-left: 0.2rem;
+  border-left: 3px solid transparent;
 }
 nav a ,
 nav a:visited {
@@ -203,8 +205,12 @@ nav label {
   padding-top: 0.75rem;
   border-bottom: 1px solid #CCC;
 }
+nav a.current ,
 nav a:hover {
   background-color: #DDD;
+}
+nav a.current {
+  border-left-color: #CCC;
 }
 
 nav a i.new-window {
