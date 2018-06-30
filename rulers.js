@@ -84,8 +84,12 @@ $(document).ready(function() {
         var unit = units[u];
         div.css("width","1"+unit)
            .css("height","1"+unit);
-        this._RATIOS[unit] = div.width();
-        if ( div.width() != div.height() )
+        /* On Zepto.js, width() and height() round dimensions to integer
+         * and this is a problem for "cm" unit. jQuery works well.
+         * So let's use the pure javascript getBoundingClientRect() method */
+        var rect = div[0].getBoundingClientRect();
+        this._RATIOS[unit] = rect.width;
+        if ( rect.width != rect.height )
         {
           console.error("Ouch, conversion '"+unit+"' to 'px' is different vertically/horizontally !");
         }
