@@ -24,7 +24,25 @@ $(document).ready(function() {
     _OPTIONS: {
       unit: "px",
       ref:  "body",
-      autoshow: "none"  /* (none|horiz|vert|both) */
+      autoshow: "none",   /* (none|horiz|vert|both) */
+      showmenu: "false",  /* (false|true) or (0|1) */
+    },
+
+    // helper to read boolean value, return true or false
+    _getBoolOption: function( name )
+    {
+      var bVal = false;
+      var val = this._OPTIONS[name];
+      if ( typeof val == "string" )
+      {
+        val = val.toLowerCase();
+        bVal = ( val == "true" || val == "1" );
+      }
+      else if ( typeof val == "boolean" )
+      {
+        bVal = val;
+      }
+      return bVal;
     },
 
     // contains the conversion ratio between "cm" or "in" to "pixels"
@@ -108,8 +126,12 @@ $(document).ready(function() {
                       || this._OPTIONS['autoshow'] == "vert" );
       var divRulerH = $('<div class="ruler h">');
       var divRulerV = $('<div class="ruler v">');
-      var divRulerMenu = $('<ul class="ruler menu">').hide();
+      var divRulerMenu = $('<ul class="ruler menu">');
       var divRulerCorner = $('<div class="ruler corner">').text(':');
+
+      ( this._getBoolOption('showmenu')
+        ? divRulerMenu.show()
+        : divRulerMenu.hide() )
 
       if ( !bShowHoriz ) divRulerH.hide();
       if ( !bShowVert ) divRulerV.hide();
