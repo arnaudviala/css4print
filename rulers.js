@@ -254,14 +254,22 @@ $(document).ready(function() {
       });
     },
 
-    //  Internal: repositionate the horizontal/vertical ".ticks" objects
-    //            so that relative x=0, y=0 match ref's {left,top}
-    _moveTicks: function()
+    // return the offset of the "Ref" (reference) object
+    //  called by _moveTicks() and _moveCursorTicks()
+    _getRefOffset: function()
     {
       var ref = $(this._OPTIONS['ref']);
       var offset = ref.offset();
       offset.top -= $(document.body).scrollTop();
       offset.left -= $(document.body).scrollLeft();
+      return offset;
+    },
+
+    //  Internal: repositionate the horizontal/vertical ".ticks" objects
+    //            so that relative x=0, y=0 match ref's {left,top}
+    _moveTicks: function()
+    {
+      var offset = this._getRefOffset();
       this._HTMLElements['divTicksH'].css("left",offset.left+"px");
       this._HTMLElements['divTicksV'].css("top",offset.top+"px");
     },
@@ -366,9 +374,12 @@ $(document).ready(function() {
 
     _moveCursorTicks: function( cursorPosition )
     {
-      var left = cursorPosition.x - this._HTMLElements['divTicksH'].position().left;
-      var top = cursorPosition.y - this._HTMLElements['divTicksV'].position().top;
-
+      // DO NOT use "this._HTMLElements['divTicks*'].position()" as it can be
+      //    hidden and therefore uncomputable.
+      // use this._getRefOffset() instead.
+      var offset = this._getRefOffset();
+      var left = cursorPosition.x - offset.left;
+      var top = cursorPosition.y - offset.top
       var tCx = this._HTMLElements['divTickMouseH'];
       var tCy = this._HTMLElements['divTickMouseV'];
       tCx.css("left", left+"px");
