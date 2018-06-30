@@ -125,12 +125,12 @@ $(document).ready(function() {
       var chkVert = $('<input type="checkbox" data-ruler="vert">')
         .prop('checked', bShowVert);
       var liShow = $('<li>')
-        .append( $('<label>').text('Show:') )
+        .append( $('<label>').text('Show:').addClass("name") )
         .append( $('<label>').text('Horiz.').prepend(chkHoriz) )
         .append( $('<label>').text('Vert.').prepend(chkVert) )
         .appendTo(divRulerMenu);
       var liCursorPosition = $('<li>')
-        .append( $('<label>').text('Mouse:') )
+        .append( $('<label>').text('Mouse:').addClass("name") )
         .append( $('<label>').addClass("cursor-position") )
         .appendTo(divRulerMenu);
       var list = $('<select>');
@@ -144,7 +144,7 @@ $(document).ready(function() {
       }
 
       var liUnit = $('<li>')
-        .append( $('<label>').text('Unit:') )
+        .append( $('<label>').text('Unit:').addClass("name") )
         .append( list )
         .appendTo(divRulerMenu);
 

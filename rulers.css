@@ -237,7 +237,7 @@ body {
   margin-bottom: 3px;
   list-style-type: none;
 }
-.ruler.menu label {
+.ruler.menu label.name {
   width: 4em;
   display: inline-block;
 }
