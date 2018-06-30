@@ -149,6 +149,9 @@ $(document).ready(function() {
         .appendTo(divRulerMenu);
 
       var self = this;
+      divRulerCorner.on('click',function(){
+        self._onCornerClick();
+      });
       list.on('change',function(){
         self._onUnitChange( $(this).val() );
       });
@@ -163,13 +166,6 @@ $(document).ready(function() {
         .text("For now, 'unit' option is not persistent and would be lost at each reload. \
               If it's annoying, add '?ruler-unit=xx' to URL." )
         .appendTo(divRulerMenu);
-
-
-      divRulerCorner
-        .data("ruler-menu",divRulerMenu)
-        .on('click',function(){
-          $(this).data("ruler-menu").toggle();
-        });
 
       var close = $('<a>')
         .addClass("close")
@@ -211,6 +207,10 @@ $(document).ready(function() {
       this._HTMLElements['divTicksV'] = divTicksV;
       this._HTMLElements['divTickMouseH'] = tCx;
       this._HTMLElements['divTickMouseV'] = tCy;
+    },
+
+    _onCornerClick: function () {
+      this._HTMLElements['divRulerMenu'].toggle();
     },
 
     _onUnitChange: function( unit ) {
