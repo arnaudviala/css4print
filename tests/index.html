@@ -15,7 +15,16 @@ $(function() {
     $(document.body).toggleClass('hide-menu');
   });
   $('#btn-print').on('click', function() {
-    alert("Opening the print dialog to preview the PDF is not implemented.");
+    if ( document.location.href.match(/^file:/) )
+    {
+      alert("Due to Cross-Origin protection in browsers, printing is impossible with file:// access.");
+    }
+    else
+    {
+      var frame = document.getElementById("exampleFrame");
+      frame.focus();
+      frame.contentWindow.print();
+    }
   });
   $('#scale-factor').bind('change', function() {
     var iframe = $(".content iframe");
@@ -211,7 +220,7 @@ $(document).ready( function()
 </script>
 
 <div class="content">
-  <iframe name="exampleFrame" src="01-single-page/loremipsum.html" crossorigin="anonymous"></iframe>
+  <iframe id="exampleFrame" name="exampleFrame" src="01-single-page/loremipsum.html" crossorigin="anonymous"></iframe>
 </div>
 </body>
 </html>
