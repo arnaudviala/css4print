@@ -44,12 +44,13 @@ The purpose of the last two projects are a little bit different.
 ## TODO:
 
 - ~~Upload the initial version~~
-- ~~Merge all CSS into a single file~~ (still "printing-*.css" are necessary)
+- ~~Merge all CSS into a single file~~
+  - ~~Remove different files "printing-*.css"~~
 - Rename the single CSS file not yet `css4print.css`
 - Use a minifier to create a `css4print.min.css` file
 - ~~Add the possibility to create outline-cut lines around shapes. Lines that would be printed on each corner of a box for a better cutting. Simply add the class "cutting-outlines" and some javascript would create all those lines.~~
   - ~~Done. Possible enhancement, get rid (or simplify) of "z-index" used everywhere for this.~~
-- Add the landscape option.
+- ~~Add the landscape options.~~
 
 
 ## Documentation
