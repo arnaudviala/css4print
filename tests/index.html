@@ -54,7 +54,9 @@ $(function() {
 <script id="entry-template" type="text/x-handlebars-template">
   {{#each groups}}
   <ul {{#if folded}}class="folded"{{/if}}>
-    <label>{{label}}</label>
+    <label>{{label}}
+      {{#if sup}}<sup>{{sup}}</sup>{{/if}}
+    </label>
     {{#if small}}<small>{{small}}</small>{{/if}}
     {{#each tests}}
     <a href="{{href}}" target="exampleFrame">{{label}}<i class="new-window"></i></a>
@@ -71,7 +73,7 @@ $(document).ready( function()
   var groups = [
     {
       label: "Single page",
-      small: "CSS-only, no JS involved",
+      sup: "CSS only",
       tests: [
         {
           label: "Letter document",
@@ -89,6 +91,7 @@ $(document).ready( function()
     },
     {
       label: "Landscape examples",
+      sup: "CSS only",
       folded: true,
       tests: [
         {
@@ -103,7 +106,7 @@ $(document).ready( function()
     },
     {
       label: "Multiple pages",
-      small: "pure-CSS, no JS involved",
+      sup: "CSS only",
       tests: [
         {
           label: "Two Separate Pages",
@@ -133,7 +136,8 @@ $(document).ready( function()
       ]
     },
     {
-      label: "Tool \"Crop-Lines\" [js+css]",
+      label: "Tool \"Crop-Lines\"",
+      sup: "CSS + JS",
       tests: [
         {
           label: '"crop-box" (simple case)',
@@ -154,7 +158,8 @@ $(document).ready( function()
       ]
     },
     {
-      label: "Tool \"Rulers\" [js+css]",
+      label: "Tool \"Rulers\"",
+      sup: "CSS + JS",
       tests: [
         {
           label: "Simple example",
