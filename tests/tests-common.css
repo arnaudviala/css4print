@@ -20,6 +20,11 @@ hr {
   border-top: 1px solid #CCC;
 }
 
+.todo {
+  color: rgb(128,0,0) ! important;
+  background-color: rgba(255,0,0,0.5);
+}
+
 /* This is the lorem-ipsum block, let's put it in the middle of the page. */
 .page p.latin {
   border: 1px dashed grey;

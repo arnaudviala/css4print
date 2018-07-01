@@ -49,6 +49,11 @@ body {
   margin: 0;
   -webkit-print-color-adjust: exact;
 }
+/* Tried to use named page selectors as defined in CSS3
+ *    https://www.w3.org/TR/css3-page/#using-named-pages
+ * but it looks like it's not supported (at least by Chromium 66 at 2018-06-30)
+ *
+ * @page pageA4 { ... } */
 
 .page-a4 {          /* A4 is 21cm x 29.7cm  */
   width: 21cm;
@@ -63,9 +68,7 @@ body {
 .page-letter.single-page {
   height: 11in;
 }
-/* "landscape" class is not ready yet,
- *  asking by CSS to print in landscape is not so simple...
- *
+
 .page-a4.landscape {
   width: 29.7cm;
 }
@@ -73,12 +76,13 @@ body {
   width: 11in;
 }
 .page-a4.single-page.landscape {
-  height: 21cm;
+  height: 209mm;   /* /!\ if 21cm is set, a second blank page is issued at print :-( */
 }
 .page-letter.single-page.landscape {
   height: 8.5in;
 }
-**/
+
+
 @media screen {
   .page {
     margin-top: 0.5cm;
