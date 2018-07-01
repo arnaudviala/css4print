@@ -1,27 +1,7 @@
+/* Both "print" and "screen" media */
 body {
-  background-color: rgb(200,200,200);
-  background: repeating-linear-gradient(
-    45deg,
-    #DDD,
-    #DDD 10px,
-    #CCC 10px,
-    #CCC 20px
-  );
   margin: 0;
-  padding-top: 0.5cm;
-  padding-bottom: 0.5cm;
 }
-
-@media print {
-  body {
-    background: none;
-    background-color: white;
-    margin: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-  }
-}
-
 
 /* A ".page" is not necessarly a single page.
  * Example, my résumé is contained in one '.page' element
@@ -31,64 +11,26 @@ body {
  * but is set for '.single-page'.
  */
 .page {
-  border: 1px solid rgb(100,100,100);
-  background-color: white;
-  margin-left: auto;
-  margin-right: auto;
   position: relative;
   box-sizing: border-box;
 }
-@media print {
-  .page {
-    border: none;
-    margin: 0;
-  }
-}
-@page {
-  /* the "size" property is still set in specific files "printing-xxx.css" */
-  margin: 0;
-  -webkit-print-color-adjust: exact;
-}
-/* Tried to use named page selectors as defined in CSS3
- *    https://www.w3.org/TR/css3-page/#using-named-pages
- * but it looks like it's not supported (at least by Chromium 66 at 2018-06-30)
- *
- * @page pageA4 { ... } */
 
-.page-a4 {          /* A4 is 21cm x 29.7cm  */
-  width: 21cm;
-}
-.page-letter {      /* Letter is 8.5in x 11in  */
-  width: 8.5in;
-}
-/* setting the "height" is only necessary/useful for single page documents */
-.page-a4.single-page {
-  height: 29.7cm;
-}
-.page-letter.single-page {
-  height: 11in;
-}
+/* A4         is 21cm x 29.7cm
+ * Letter     is 8.5in x 11in
+ */
+.page-a4 {      width: 21cm; }
+.page-letter {  width: 8.5in; }
+/* Setting the "height" is only necessary/useful for .single-page
+ * Default behaviour is to adapt the length of the page to its content,
+ * making it "continuous" */
+.page-a4.single-page {      height: 29.7cm; }
+.page-letter.single-page {  height: 11in; }
 
-.page-a4.landscape {
-  width: 29.7cm;
-}
-.page-letter.landscape {
-  width: 11in;
-}
-.page-a4.single-page.landscape {
-  height: 209mm;   /* /!\ if 21cm is set, a second blank page is issued at print :-( */
-}
-.page-letter.single-page.landscape {
-  height: 8.5in;
-}
-
-
-@media screen {
-  .page {
-    margin-top: 0.5cm;
-    margin-bottom: 0.5cm;
-  }
-}
+.page-a4.landscape {                  width: 29.7cm; }
+.page-letter.landscape {              width: 11in; }
+.page-a4.single-page.landscape {      height: 209mm;  }
+.page-letter.single-page.landscape {  height: 8.5in; }
+/* /!\ bug : if 21cm is set, a second blank page is issued at print :-( */
 
 .page , /* default padding is 10mm */
 .page.padding-10mm {        padding: 10mm;      }
@@ -97,6 +39,62 @@ body {
 .page.padding-15mm {        padding: 15mm;      }
 .page.padding-20mm {        padding: 20mm;      }
 .page.padding-1in  {        padding: 1in;       }
+
+
+
+
+/* Only "print" media */
+@media print {
+  body {
+    background: none;
+    background-color: white;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .page {
+    border: none;
+    margin: 0;
+  }
+}
+
+@page {
+  /* the "size" property still needs to be written in every HTML document */
+  margin: 0;
+  -webkit-print-color-adjust: exact;
+}
+/* Tried to use named page selectors as defined in CSS3
+ *    https://www.w3.org/TR/css3-page/#using-named-pages
+ * but it looks like it's not supported (at least by Chromium 66 at 2018-06-30)
+ *
+ * @page pageA4 { ... }
+ */
+
+
+/* Only "screen" media, for online rendering or preview in a browser */
+@media screen {
+  body {
+    background-color: rgb(200,200,200);
+    background: repeating-linear-gradient(
+      45deg,
+      #DDD,
+      #DDD 10px,
+      #CCC 10px,
+      #CCC 20px
+    );
+    padding-top: 0.5cm;
+    padding-bottom: 0.5cm;
+  }
+
+  .page {
+    border: 1px solid rgb(100,100,100);
+    background-color: white;
+    margin: 0.5cm auto;
+    /* 0.5cm : to create a vertical separation between two pages
+     *          or at the edges with document.body
+     * auto  : to center the page in document.body */
+  }
+}
+
 
 
 
@@ -234,3 +232,4 @@ body {
     margin-top: 0.001cm;
   }
 }
+/* END OF *** PAGE-BREAK *** STUFF */
