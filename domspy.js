@@ -71,7 +71,7 @@
         self._recText( $(this), 0 );
       })
 
-      this._showReport();
+      this._showModalReport();
 
       console.log("DOMSpy::run() finished", "Number of elements: "+this.m_count);
     },
@@ -126,6 +126,38 @@
           self._recText($(this), level+1);
         });
       }
+    },
+
+    _showModalReport: function()
+    {
+      // All style is in JS... (I know it's hard but I don't want extra CSS)
+      var css = {
+        position: 'absolute',
+        background: "rgba(255,0,0,0.5)",
+        top:      '0px',
+        left:     '0px',
+        padding:  '1em 3em',
+        border:   '3px solid red'
+      };
+      var div = $('<div>')
+        .html('<b>DOM Spy Report</b><br/>'
+             +this.m_count+' DOM elements processed'+'<br/>'+'<br/>'
+             +'<button name="view">View report</button>'
+             +'&nbsp;&nbsp;&nbsp;&nbsp;'
+             +'<button name="dismiss">Dismiss</button>');
+      for( var c in css )
+      {
+        div.css( c, css[c] );
+      }
+      div.appendTo($(document.body));
+      $(div).find('[name="dismiss"]').on('click', function() {
+        $(div).remove();
+      });
+      var self = this;
+      $(div).find('[name="view"]').on('click', function() {
+        self._showReport();
+      });
+
     },
 
     _showReport: function()
