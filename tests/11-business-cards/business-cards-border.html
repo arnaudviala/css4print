@@ -7,8 +7,14 @@
 
 <link rel="stylesheet" type="text/css" href="business-cards.css">
 
+<style>
+.vcard {
+  border: 1px solid #DDD;
+}
+</style>
+
 <!-- the title is used to create a default name when printing to PDF -->
-<title>Business Cards</title>
+<title>business-cards-border</title>
 
 <!--<script type="text/javascript" src="//code.jquery.com/jquery-3.3.1.slim.min.js"></script>-->
 <script type="text/javascript"
@@ -18,7 +24,7 @@
 
 <script>
 $(function() {
-  // clone() every DOM element with the "data-clone" attribute
+  // clone() every DOM element which has a "data-clone" attribute
   $("[data-clone]").each( function(i,elem) {
     var clone = $(elem).data("clone");
     var count = parseInt(clone);
@@ -43,7 +49,7 @@ $(function() {
 
   <div id="vcards" class="w-flex-sb">
 
-    <div class="vcard w-padding" data-clone="6">
+    <div class="vcard w-padding" data-clone="8">
 
       <h1 id="name">
         <span id="firstname">John</span>
