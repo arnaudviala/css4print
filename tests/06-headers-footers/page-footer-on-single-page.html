@@ -1,0 +1,100 @@
+<html>
+<head>
+<meta charset="UTF-8" />
+
+<link rel="stylesheet" type="text/css" href="../../paging.css">
+<style type="text/css">@page{ size: letter; }</style>
+
+<link rel="stylesheet" type="text/css" href="../tests-common.css">
+<!--<link rel="stylesheet" type="text/css" href="../../rulers.css">-->
+
+<title>page-breaks</title>
+
+<style type="text/css">
+.page p.block {
+  border: 1px dashed grey;
+  padding: 2cm;
+  margin-top:9cm;
+  /*position: absolute;
+  top: 9cm;
+  left: 1cm; right: 1cm;*/
+}
+.page div.note {
+  margin-top: 1cm;
+  padding: 0 2cm;
+}
+.pagefooter {
+  text-align: center;
+  border-bottom: 1px solid black;
+  background-color: #EEE;
+}
+/* yellowish paper
+@media screen {
+  .page {
+    background-color: rgb(255,255,192);
+  }
+}*/
+</style>
+
+<script type="text/javascript"
+  src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+  crossorigin="anonymous"></script>
+<!--<script type="text/javascript" src="../../rulers.js" data-ref=".page" data-unit="cm"></script>-->
+
+</head>
+<body>
+
+<div class="page single-page page-letter">
+
+  <div class="abstract absolute">
+    Page footers work well only on single page. Because we need to positionate
+    them at the bottom of the page. (Only <tt>.single-page</tt> has a fixed height.)<br/>
+    Here is a small document, showing how to use the "pageheader" class
+    to declare page header.
+    There is nothing complicated, "pageheader" are normal <tt>&lt;div&gt;</tt>
+    rendered as usual.<br/>
+    <br/>
+    By default, a "pageheader" is visible only on print media, except if the
+    class "visible" is applied :<br/>
+    <ul>
+      <li>On page #2, the header is not visible in the browser, only in the print media.</li>
+      <li>On page #3, the header is visible both in the browser and the print media.</li>
+    </ul>
+    <br/>
+    <div class="test-check">
+    On the generated PDF, the position of every "This is page #..." frame
+    must be identical on all pages. The "pagefooter" SHALL NOT disturb the
+    position of elements.</div>
+  </div>
+
+  <p class="block">This is page #1.</p>
+
+  <div class="note">
+    To insert an invisible footer, use the following HTML code :
+    <xmp><div class="pagefooter">
+  This is a footer on page 1
+</div></xmp>
+  </div>
+
+  <div class="pagefooter">This is a footer on page 1 (invisible in browser)</div>
+
+</div><!-- PAGE -->
+
+<div class="page single-page page-letter">
+
+  <p class="block">This is page #2.</p>
+
+  <div class="note">
+    To insert a visible footer, use the following HTML code :
+    <xmp><div class="pagefooter visible">
+  This is a footer on page 2
+</div></xmp>
+  </div>
+
+  <div class="pagefooter visible">This is a footer on page 2 (visible in browser)</div>
+
+</div><!-- PAGE -->
+
+</body>
+</html>

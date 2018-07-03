@@ -1,0 +1,111 @@
+<html>
+<head>
+<meta charset="UTF-8" />
+
+<link rel="stylesheet" type="text/css" href="../../paging.css">
+<style type="text/css">@page{ size: letter; }</style>
+
+<link rel="stylesheet" type="text/css" href="../tests-common.css">
+<!--<link rel="stylesheet" type="text/css" href="../../rulers.css">-->
+
+<title>page-breaks</title>
+
+<style type="text/css">
+.page p.block {
+  border: 1px dashed grey;
+  padding: 2cm;
+  margin-top:9cm;
+}
+.page div.note {
+  margin-top: 1cm;
+  padding: 0 2cm;
+}
+.pageheader {
+  text-align: center;
+  border-top: 1px solid black;
+}
+/* yellowish paper
+@media screen {
+  .page {
+    background-color: rgb(255,255,192);
+  }
+}*/
+</style>
+
+<script type="text/javascript"
+  src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+  crossorigin="anonymous"></script>
+<!--<script type="text/javascript" src="../../rulers.js" data-ref=".page" data-unit="cm"></script>-->
+
+</head>
+<body>
+
+<div class="page page-letter">
+
+  <div class="abstract absolute">
+    This document demonstrates how to use <tt>pagebreak</tt> and <tt>pageheader</tt>
+    elements. By default, both are invisible in the browser so that the page appears
+    as a very long continuous page. But when printed, the continuous page is broken
+    at the different location of <tt>pagebreak</tt> elements and the <tt>pageheader</tt>
+    element is shown as well.<br/>
+    <br/>
+    The class <tt>visible</tt> can be applied to those two elements to display
+    them within the browser<br/>
+    <br/>
+    <div class="test-check">
+    On the generated PDF, the position of every "This is page #..." frame
+    must be identical on all pages. The "pagebreak" and the "pageheader" SHALL
+    NOT disturb the position of elements.</div>
+    <br/>
+    <ul>
+    <li>Between page #1 and page #2, the <tt>pagebreak</tt> and <tt>pageheader</tt>
+      are not visible in the browser but are in the print media (PDF),</li>
+    <li>Between page #2 and page #3, the <tt>pagebreak</tt> and <tt>pageheader</tt>
+      are visible in the browser and in the print media (PDF), thanks to the use
+      of class <tt>visible</tt></li>
+    </ul>
+  </div>
+
+  <p class="block">This is page #1.</p>
+
+  <div class="note">
+    A pagebreak and a pageheader have been inserted below. They are not visible
+    in the browser. Thanks to the HTML code:
+    <xmp><div class="pagebreak"></div>
+<div class="pageheader">
+  This is a "pageheader"
+</div></xmp>
+  </div>
+
+  <!-- Plain old school <center> tag !! Sorry about that. -->
+  <center>(You cannot see either the pagebreak nor the header from your browser, as there are invisible by default)</center>
+
+  <div class="pagebreak"></div>
+  <div class="pageheader">
+    This is a "pageheader"
+  </div>
+
+
+  <p class="block">This is page #2.</p>
+
+  <div class="note">
+    A pagebreak and a pageheader have been inserted below. Using the class
+    <tt>visible</tt>, they are rendered in the browser. Here is the HTML code:
+    <xmp><div class="pagebreak visible"></div>
+<div class="pageheader visible">
+    This is a "pageheader"
+</div></xmp>
+  </div>
+
+  <div class="pagebreak visible"></div>
+  <div class="pageheader visible">
+    This is a "pageheader"
+  </div>
+
+  <p class="block">This is page #3.</p>
+
+</div><!-- PAGE -->
+
+</body>
+</html>

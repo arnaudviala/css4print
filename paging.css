@@ -259,7 +259,6 @@ body {
 }
 .page.single-page .pagefooter {
   position: absolute;
-  display: block;
   box-sizing: border-box;
 }
 
