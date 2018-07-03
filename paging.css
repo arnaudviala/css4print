@@ -234,3 +234,51 @@ body {
 }
 /* END OF *** PAGE-BREAK *** STUFF */
 
+
+
+/* *** PAGE-HEADER & PAGE-FOOTER ***
+ *  By default, header and footer are not visible in the HTML flow
+ *  in the browser, but only on the printed job.
+ *  Except if the "visible" class is applied to the element.
+ */
+@media screen {
+  .page .pageheader ,
+  .page .pagefooter {
+    display: none;
+  }
+  .page .pageheader.visible ,
+  .page .pagefooter.visible {
+    display: block;
+  }
+}
+@media print {
+  .page .pageheader ,
+  .page .pagefooter {
+    display: block;
+  }
+}
+.page.single-page .pagefooter {
+  position: absolute;
+  display: block;
+  box-sizing: border-box;
+}
+
+/* We have to positionate the footer taking the padding
+ * into account.
+ */
+.page              .pagefooter, /* default padding is 10mm */
+.page.padding-10mm .pagefooter {
+  left: 10mm;     right: 10mm;      bottom: 10mm;
+}
+.page.padding-5mm  .pagefooter {
+  left: 5mm;      right: 5mm;       bottom: 5mm;
+}
+.page.padding-15mm .pagefooter {
+  left: 15mm;     right: 15mm;      bottom: 15mm;
+}
+.page.padding-20mm .pagefooter {
+  left: 20mm;     right: 20mm;      bottom: 20mm;
+}
+.page.padding-1in  .pagefooter {
+  left: 1in;      right: 1in;       bottom: 1in;
+}
