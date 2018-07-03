@@ -180,11 +180,11 @@ body {
     content: "page-break";
     padding: 0 0.5rem 0 1em;
     display: inline-block;
+    position: absolute;
   }
   div.pagebreak.visible.margin-left:after ,
   div.pagebreak.visible.margin-right:after {
     width: 5em;
-    position: absolute;
   }
   div.pagebreak.visible.margin-left:after {
     right: 100%;
@@ -233,3 +233,4 @@ body {
   }
 }
 /* END OF *** PAGE-BREAK *** STUFF */
+
